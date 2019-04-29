@@ -22420,9 +22420,11 @@ $c_Lcoursier_web_Backend.prototype.task$1__p1__Lcoursier_web_State__Lcoursier_ca
   $m_Lcoursier_package$Resolution$();
   var x$12 = $m_s_None$();
   $m_Lcoursier_package$Resolution$();
-  var x$13 = $m_sci_Map$EmptyMap$();
+  var x$13 = $m_sci_Nil$();
   $m_Lcoursier_package$Resolution$();
-  var res = new $c_Lcoursier_core_Resolution().init___sc_Seq__sci_Set__sci_Map__sci_Set__sci_Map__sci_Map__sci_Map__s_Option__Lcoursier_core_Activation$Os__s_Option__s_Option__s_Option__sci_Map(x$1, x$3, x$4, x$5, x$6, x$7, x$8, x$2, x$9, x$10, x$11, x$12, x$13);
+  var x$14 = $m_sci_Map$EmptyMap$();
+  $m_Lcoursier_package$Resolution$();
+  var res = new $c_Lcoursier_core_Resolution().init___sc_Seq__sci_Set__sci_Map__sci_Set__sci_Map__sci_Map__sci_Map__s_Option__Lcoursier_core_Activation$Os__s_Option__s_Option__s_Option__sc_Seq__sci_Map(x$1, x$3, x$4, x$5, x$6, x$7, x$8, x$2, x$9, x$10, x$11, x$12, x$13, x$14);
   $m_Lcoursier_package$();
   var jsx$3 = $m_Lcoursier_package$().ResolutionProcess$1.apply__Lcoursier_core_Resolution__Lcoursier_core_ResolutionProcess(res);
   var jsx$2 = s$1.repositories$1;
@@ -22437,8 +22439,8 @@ $c_Lcoursier_web_Backend.prototype.task$1__p1__Lcoursier_web_State__Lcoursier_ca
       }
     })
   })(this));
-  var this$20 = $m_sc_Seq$();
-  return $as_Lcoursier_util_Task(jsx$3.run__F1__I__Lcoursier_util_Monad__O(this.fetch__sc_Seq__F1__F1($as_sc_Seq(jsx$2.map__F1__scg_CanBuildFrom__O(jsx$1, this$20.ReusableCBFInstance$2)), new $c_Lcoursier_cache_AlwaysDownload().init___Lcoursier_cache_CacheLogger(logger$1).fetch__F1()), 100, $m_Lcoursier_util_Task$().sync$1)).value$1
+  var this$21 = $m_sc_Seq$();
+  return $as_Lcoursier_util_Task(jsx$3.run__F1__I__Lcoursier_util_Monad__O(this.fetch__sc_Seq__F1__F1($as_sc_Seq(jsx$2.map__F1__scg_CanBuildFrom__O(jsx$1, this$21.ReusableCBFInstance$2)), new $c_Lcoursier_cache_AlwaysDownload().init___Lcoursier_cache_CacheLogger(logger$1).fetch__F1()), 100, $m_Lcoursier_util_Task$().sync$1)).value$1
 });
 $c_Lcoursier_web_Backend.prototype.handleResolve__Ljapgolly_scalajs_react_raw_SyntheticEvent__F0 = (function(e) {
   var f = new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function($this, e$1) {
@@ -37856,21 +37858,27 @@ $c_Lcoursier_core_Resolution$.prototype.depsWithDependencyManagement__sc_Seq__sc
   return $as_sc_Seq(dependencies.map__F1__scg_CanBuildFrom__O(jsx$1, this$11.ReusableCBFInstance$2))
 });
 $c_Lcoursier_core_Resolution$.prototype.mergeVersions__sc_Seq__s_Option = (function(versions) {
-  var jsx$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this) {
-    return (function(s$2) {
-      var s = $as_T(s$2);
-      return $m_Lcoursier_core_Parse$().versionConstraint__T__Lcoursier_core_VersionConstraint(s)
-    })
-  })(this));
-  var this$1 = $m_sc_Seq$();
-  var parsedConstraints = $as_sc_Seq(versions.map__F1__scg_CanBuildFrom__O(jsx$1, this$1.ReusableCBFInstance$2));
-  var this$2 = $m_Lcoursier_core_VersionConstraint$().merge__sc_Seq__s_Option(parsedConstraints);
-  if (this$2.isEmpty__Z()) {
+  if (versions.isEmpty__Z()) {
     return $m_s_None$()
+  } else if ((versions.lengthCompare__I__I(1) === 0)) {
+    return new $c_s_Some().init___O(versions.head__O())
   } else {
-    var arg1 = this$2.get__O();
-    var x$2 = $as_Lcoursier_core_VersionConstraint(arg1);
-    return x$2.repr__s_Option()
+    var jsx$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this) {
+      return (function(s$2) {
+        var s = $as_T(s$2);
+        return $m_Lcoursier_core_Parse$().versionConstraint__T__Lcoursier_core_VersionConstraint(s)
+      })
+    })(this));
+    var this$1 = $m_sc_Seq$();
+    var parsedConstraints = $as_sc_Seq(versions.map__F1__scg_CanBuildFrom__O(jsx$1, this$1.ReusableCBFInstance$2));
+    var this$2 = $m_Lcoursier_core_VersionConstraint$().merge__sc_Seq__s_Option(parsedConstraints);
+    if (this$2.isEmpty__Z()) {
+      return $m_s_None$()
+    } else {
+      var arg1 = this$2.get__O();
+      var x$2 = $as_Lcoursier_core_VersionConstraint(arg1);
+      return x$2.repr__s_Option()
+    }
   }
 });
 $c_Lcoursier_core_Resolution$.prototype.withDefaultConfig__Lcoursier_core_Dependency__Lcoursier_core_Dependency = (function(dep) {
@@ -39038,8 +39046,9 @@ $c_Lcoursier_package$Resolution$.prototype.init___ = (function() {
   var jdkVersion = this.apply$default$10__s_Option();
   var userActivations = $m_s_None$();
   var mapDependencies = $m_s_None$();
+  var extraProperties = $m_sci_Nil$();
   var forceProperties = $m_sci_Map$EmptyMap$();
-  this.empty$1 = new $c_Lcoursier_core_Resolution().init___sc_Seq__sci_Set__sci_Map__sci_Set__sci_Map__sci_Map__sci_Map__s_Option__Lcoursier_core_Activation$Os__s_Option__s_Option__s_Option__sci_Map(rootDependencies, dependencies, forceVersions, conflicts, projectCache, errorCache, finalDependencies, filter, osInfo, jdkVersion, userActivations, mapDependencies, forceProperties);
+  this.empty$1 = new $c_Lcoursier_core_Resolution().init___sc_Seq__sci_Set__sci_Map__sci_Set__sci_Map__sci_Map__sci_Map__s_Option__Lcoursier_core_Activation$Os__s_Option__s_Option__s_Option__sc_Seq__sci_Map(rootDependencies, dependencies, forceVersions, conflicts, projectCache, errorCache, finalDependencies, filter, osInfo, jdkVersion, userActivations, mapDependencies, extraProperties, forceProperties);
   return this
 });
 $c_Lcoursier_package$Resolution$.prototype.apply$default$10__s_Option = (function() {
@@ -47290,6 +47299,7 @@ function $c_Lcoursier_core_Resolution() {
   this.jdkVersion$1 = null;
   this.userActivations$1 = null;
   this.mapDependencies$1 = null;
+  this.extraProperties$1 = null;
   this.forceProperties$1 = null;
   this.finalDependenciesCache0$1 = null;
   this.bitmap$0$1 = 0
@@ -47336,7 +47346,7 @@ $c_Lcoursier_core_Resolution.prototype.productPrefix__T = (function() {
   return "Resolution"
 });
 $c_Lcoursier_core_Resolution.prototype.productArity__I = (function() {
-  return 13
+  return 14
 });
 $c_Lcoursier_core_Resolution.prototype.helper$3__p1__sci_Set__sci_Set__sci_Set__sci_Set = (function(toCheck, done, missing) {
   _helper: while (true) {
@@ -47439,84 +47449,91 @@ $c_Lcoursier_core_Resolution.prototype.equals__O__Z = (function(x$1) {
     if (((x === null) ? (x$2 === null) : x.equals__O__Z(x$2))) {
       var x$3 = this.dependencies$1;
       var x$4 = Resolution$1.dependencies$1;
-      var jsx$11 = ((x$3 === null) ? (x$4 === null) : $f_sc_GenSetLike__equals__O__Z(x$3, x$4))
+      var jsx$12 = ((x$3 === null) ? (x$4 === null) : $f_sc_GenSetLike__equals__O__Z(x$3, x$4))
+    } else {
+      var jsx$12 = false
+    };
+    if (jsx$12) {
+      var x$5 = this.forceVersions$1;
+      var x$6 = Resolution$1.forceVersions$1;
+      var jsx$11 = ((x$5 === null) ? (x$6 === null) : $f_sc_GenMapLike__equals__O__Z(x$5, x$6))
     } else {
       var jsx$11 = false
     };
     if (jsx$11) {
-      var x$5 = this.forceVersions$1;
-      var x$6 = Resolution$1.forceVersions$1;
-      var jsx$10 = ((x$5 === null) ? (x$6 === null) : $f_sc_GenMapLike__equals__O__Z(x$5, x$6))
+      var x$7 = this.conflicts$1;
+      var x$8 = Resolution$1.conflicts$1;
+      var jsx$10 = ((x$7 === null) ? (x$8 === null) : $f_sc_GenSetLike__equals__O__Z(x$7, x$8))
     } else {
       var jsx$10 = false
     };
     if (jsx$10) {
-      var x$7 = this.conflicts$1;
-      var x$8 = Resolution$1.conflicts$1;
-      var jsx$9 = ((x$7 === null) ? (x$8 === null) : $f_sc_GenSetLike__equals__O__Z(x$7, x$8))
+      var x$9 = this.projectCache$1;
+      var x$10 = Resolution$1.projectCache$1;
+      var jsx$9 = ((x$9 === null) ? (x$10 === null) : $f_sc_GenMapLike__equals__O__Z(x$9, x$10))
     } else {
       var jsx$9 = false
     };
     if (jsx$9) {
-      var x$9 = this.projectCache$1;
-      var x$10 = Resolution$1.projectCache$1;
-      var jsx$8 = ((x$9 === null) ? (x$10 === null) : $f_sc_GenMapLike__equals__O__Z(x$9, x$10))
+      var x$11 = this.errorCache$1;
+      var x$12 = Resolution$1.errorCache$1;
+      var jsx$8 = ((x$11 === null) ? (x$12 === null) : $f_sc_GenMapLike__equals__O__Z(x$11, x$12))
     } else {
       var jsx$8 = false
     };
     if (jsx$8) {
-      var x$11 = this.errorCache$1;
-      var x$12 = Resolution$1.errorCache$1;
-      var jsx$7 = ((x$11 === null) ? (x$12 === null) : $f_sc_GenMapLike__equals__O__Z(x$11, x$12))
+      var x$13 = this.finalDependenciesCache$1;
+      var x$14 = Resolution$1.finalDependenciesCache$1;
+      var jsx$7 = ((x$13 === null) ? (x$14 === null) : $f_sc_GenMapLike__equals__O__Z(x$13, x$14))
     } else {
       var jsx$7 = false
     };
     if (jsx$7) {
-      var x$13 = this.finalDependenciesCache$1;
-      var x$14 = Resolution$1.finalDependenciesCache$1;
-      var jsx$6 = ((x$13 === null) ? (x$14 === null) : $f_sc_GenMapLike__equals__O__Z(x$13, x$14))
+      var x$15 = this.filter$1;
+      var x$16 = Resolution$1.filter$1;
+      var jsx$6 = ((x$15 === null) ? (x$16 === null) : x$15.equals__O__Z(x$16))
     } else {
       var jsx$6 = false
     };
     if (jsx$6) {
-      var x$15 = this.filter$1;
-      var x$16 = Resolution$1.filter$1;
-      var jsx$5 = ((x$15 === null) ? (x$16 === null) : x$15.equals__O__Z(x$16))
+      var x$17 = this.osInfo$1;
+      var x$18 = Resolution$1.osInfo$1;
+      var jsx$5 = ((x$17 === null) ? (x$18 === null) : x$17.equals__O__Z(x$18))
     } else {
       var jsx$5 = false
     };
     if (jsx$5) {
-      var x$17 = this.osInfo$1;
-      var x$18 = Resolution$1.osInfo$1;
-      var jsx$4 = ((x$17 === null) ? (x$18 === null) : x$17.equals__O__Z(x$18))
+      var x$19 = this.jdkVersion$1;
+      var x$20 = Resolution$1.jdkVersion$1;
+      var jsx$4 = ((x$19 === null) ? (x$20 === null) : x$19.equals__O__Z(x$20))
     } else {
       var jsx$4 = false
     };
     if (jsx$4) {
-      var x$19 = this.jdkVersion$1;
-      var x$20 = Resolution$1.jdkVersion$1;
-      var jsx$3 = ((x$19 === null) ? (x$20 === null) : x$19.equals__O__Z(x$20))
+      var x$21 = this.userActivations$1;
+      var x$22 = Resolution$1.userActivations$1;
+      var jsx$3 = ((x$21 === null) ? (x$22 === null) : x$21.equals__O__Z(x$22))
     } else {
       var jsx$3 = false
     };
     if (jsx$3) {
-      var x$21 = this.userActivations$1;
-      var x$22 = Resolution$1.userActivations$1;
-      var jsx$2 = ((x$21 === null) ? (x$22 === null) : x$21.equals__O__Z(x$22))
+      var x$23 = this.mapDependencies$1;
+      var x$24 = Resolution$1.mapDependencies$1;
+      var jsx$2 = ((x$23 === null) ? (x$24 === null) : x$23.equals__O__Z(x$24))
     } else {
       var jsx$2 = false
     };
     if (jsx$2) {
-      var x$23 = this.mapDependencies$1;
-      var x$24 = Resolution$1.mapDependencies$1;
-      var jsx$1 = ((x$23 === null) ? (x$24 === null) : x$23.equals__O__Z(x$24))
+      var x$25 = this.extraProperties$1;
+      var x$26 = Resolution$1.extraProperties$1;
+      var jsx$1 = ((x$25 === null) ? (x$26 === null) : x$25.equals__O__Z(x$26))
     } else {
       var jsx$1 = false
     };
     if (jsx$1) {
-      var x$25 = this.forceProperties$1;
-      var x$26 = Resolution$1.forceProperties$1;
-      return ((x$25 === null) ? (x$26 === null) : $f_sc_GenMapLike__equals__O__Z(x$25, x$26))
+      var x$27 = this.forceProperties$1;
+      var x$28 = Resolution$1.forceProperties$1;
+      return ((x$27 === null) ? (x$28 === null) : $f_sc_GenMapLike__equals__O__Z(x$27, x$28))
     } else {
       return false
     }
@@ -47846,6 +47863,10 @@ $c_Lcoursier_core_Resolution.prototype.productElement__I__O = (function(x$1) {
       break
     }
     case 12: {
+      return this.extraProperties$1;
+      break
+    }
+    case 13: {
       return this.forceProperties$1;
       break
     }
@@ -47906,23 +47927,6 @@ $c_Lcoursier_core_Resolution.prototype.nextDependenciesAndConflicts$lzycompute__
     this.bitmap$0$1 = (((2 | this.bitmap$0$1) << 24) >> 24)
   };
   return this.nextDependenciesAndConflicts$1
-});
-$c_Lcoursier_core_Resolution.prototype.init___sc_Seq__sci_Set__sci_Map__sci_Set__sci_Map__sci_Map__sci_Map__s_Option__Lcoursier_core_Activation$Os__s_Option__s_Option__s_Option__sci_Map = (function(rootDependencies, dependencies, forceVersions, conflicts, projectCache, errorCache, finalDependenciesCache, filter, osInfo, jdkVersion, userActivations, mapDependencies, forceProperties) {
-  this.rootDependencies$1 = rootDependencies;
-  this.dependencies$1 = dependencies;
-  this.forceVersions$1 = forceVersions;
-  this.conflicts$1 = conflicts;
-  this.projectCache$1 = projectCache;
-  this.errorCache$1 = errorCache;
-  this.finalDependenciesCache$1 = finalDependenciesCache;
-  this.filter$1 = filter;
-  this.osInfo$1 = osInfo;
-  this.jdkVersion$1 = jdkVersion;
-  this.userActivations$1 = userActivations;
-  this.mapDependencies$1 = mapDependencies;
-  this.forceProperties$1 = forceProperties;
-  this.finalDependenciesCache0$1 = new $c_ju_concurrent_ConcurrentHashMap().init___();
-  return this
 });
 $c_Lcoursier_core_Resolution.prototype.dependencyManagementMissing__Lcoursier_core_Project__sci_Set = (function(project) {
   var jsx$2 = this.dependencyManagementRequirements__Lcoursier_core_Project__sci_Set(project);
@@ -48030,18 +48034,42 @@ $c_Lcoursier_core_Resolution.prototype.remainingDependencies$lzycompute__p1__sci
   };
   return this.remainingDependencies$1
 });
-$c_Lcoursier_core_Resolution.prototype.isDone__Z = (function() {
-  return (((((8 & this.bitmap$0$1) << 24) >> 24) === 0) ? this.isDone$lzycompute__p1__Z() : this.isDone$1)
-});
-$c_Lcoursier_core_Resolution.prototype.copyWithCache__sc_Seq__sci_Set__sci_Map__sci_Set__sci_Map__s_Option__Lcoursier_core_Activation$Os__s_Option__s_Option__Lcoursier_core_Resolution = (function(rootDependencies, dependencies, forceVersions, conflicts, errorCache, filter, osInfo, jdkVersion, userActivations) {
+$c_Lcoursier_core_Resolution.prototype.copyWithCache__p1__sc_Seq__sci_Set__sci_Set__sci_Map__Lcoursier_core_Resolution = (function(rootDependencies, dependencies, conflicts, errorCache) {
+  var forceVersions = this.forceVersions$1;
   var projectCache = this.projectCache$1;
   var jsx$1 = this.finalDependenciesCache$1;
   var this$1 = $m_sc_JavaConverters$();
   var m = this.finalDependenciesCache0$1;
   var finalDependenciesCache = jsx$1.$$plus$plus__sc_GenTraversableOnce__sci_Map($as_sc_GenTraversableOnce($f_sc_convert_DecorateAsScala__mapAsScalaConcurrentMapConverter__ju_concurrent_ConcurrentMap__sc_convert_Decorators$AsScala(this$1, m).asScala__O()));
+  var filter = this.filter$1;
+  var osInfo = this.osInfo$1;
+  var jdkVersion = this.jdkVersion$1;
+  var userActivations = this.userActivations$1;
   var mapDependencies = this.mapDependencies$1;
+  var extraProperties = this.extraProperties$1;
   var forceProperties = this.forceProperties$1;
-  return new $c_Lcoursier_core_Resolution().init___sc_Seq__sci_Set__sci_Map__sci_Set__sci_Map__sci_Map__sci_Map__s_Option__Lcoursier_core_Activation$Os__s_Option__s_Option__s_Option__sci_Map(rootDependencies, dependencies, forceVersions, conflicts, projectCache, errorCache, finalDependenciesCache, filter, osInfo, jdkVersion, userActivations, mapDependencies, forceProperties)
+  return new $c_Lcoursier_core_Resolution().init___sc_Seq__sci_Set__sci_Map__sci_Set__sci_Map__sci_Map__sci_Map__s_Option__Lcoursier_core_Activation$Os__s_Option__s_Option__s_Option__sc_Seq__sci_Map(rootDependencies, dependencies, forceVersions, conflicts, projectCache, errorCache, finalDependenciesCache, filter, osInfo, jdkVersion, userActivations, mapDependencies, extraProperties, forceProperties)
+});
+$c_Lcoursier_core_Resolution.prototype.isDone__Z = (function() {
+  return (((((8 & this.bitmap$0$1) << 24) >> 24) === 0) ? this.isDone$lzycompute__p1__Z() : this.isDone$1)
+});
+$c_Lcoursier_core_Resolution.prototype.init___sc_Seq__sci_Set__sci_Map__sci_Set__sci_Map__sci_Map__sci_Map__s_Option__Lcoursier_core_Activation$Os__s_Option__s_Option__s_Option__sc_Seq__sci_Map = (function(rootDependencies, dependencies, forceVersions, conflicts, projectCache, errorCache, finalDependenciesCache, filter, osInfo, jdkVersion, userActivations, mapDependencies, extraProperties, forceProperties) {
+  this.rootDependencies$1 = rootDependencies;
+  this.dependencies$1 = dependencies;
+  this.forceVersions$1 = forceVersions;
+  this.conflicts$1 = conflicts;
+  this.projectCache$1 = projectCache;
+  this.errorCache$1 = errorCache;
+  this.finalDependenciesCache$1 = finalDependenciesCache;
+  this.filter$1 = filter;
+  this.osInfo$1 = osInfo;
+  this.jdkVersion$1 = jdkVersion;
+  this.userActivations$1 = userActivations;
+  this.mapDependencies$1 = mapDependencies;
+  this.extraProperties$1 = extraProperties;
+  this.forceProperties$1 = forceProperties;
+  this.finalDependenciesCache0$1 = new $c_ju_concurrent_ConcurrentHashMap().init___();
+  return this
 });
 $c_Lcoursier_core_Resolution.prototype.nextNoMissingUnsafe$lzycompute__p1__Lcoursier_core_Resolution = (function() {
   if (((((128 & this.bitmap$0$1) << 24) >> 24) === 0)) {
@@ -48053,13 +48081,8 @@ $c_Lcoursier_core_Resolution.prototype.nextNoMissingUnsafe$lzycompute__p1__Lcour
     var x$1 = $as_sci_Set(this.newDependencies__sci_Set().$$plus$plus__sc_GenTraversableOnce__sc_Set(newConflicts));
     var x$2 = newConflicts.toSet__sci_Set();
     var x$3 = this.rootDependencies$1;
-    var x$4 = this.forceVersions$1;
-    var x$5 = this.errorCache$1;
-    var x$6 = this.filter$1;
-    var x$7 = this.osInfo$1;
-    var x$8 = this.jdkVersion$1;
-    var x$9 = this.userActivations$1;
-    this.nextNoMissingUnsafe$1 = this.copyWithCache__sc_Seq__sci_Set__sci_Map__sci_Set__sci_Map__s_Option__Lcoursier_core_Activation$Os__s_Option__s_Option__Lcoursier_core_Resolution(x$3, x$1, x$4, x$2, x$5, x$6, x$7, x$8, x$9);
+    var x$4 = this.errorCache$1;
+    this.nextNoMissingUnsafe$1 = this.copyWithCache__p1__sc_Seq__sci_Set__sci_Set__sci_Map__Lcoursier_core_Resolution(x$3, x$1, x$2, x$4);
     this.bitmap$0$1 = (((128 | this.bitmap$0$1) << 24) >> 24)
   };
   return this.nextNoMissingUnsafe$1
@@ -48141,6 +48164,13 @@ $c_Lcoursier_core_Resolution.prototype.helper$2__p1__sci_Map__sci_Set__sci_Map =
       continue _helper
     }
   }
+});
+$c_Lcoursier_core_Resolution.prototype.addToErrorCache__sc_Iterable__Lcoursier_core_Resolution = (function(entries) {
+  var x$1 = this.errorCache$1.$$plus$plus__sc_GenTraversableOnce__sci_Map(entries);
+  var x$2 = this.rootDependencies$1;
+  var x$3 = this.dependencies$1;
+  var x$4 = this.conflicts$1;
+  return this.copyWithCache__p1__sc_Seq__sci_Set__sci_Set__sci_Map__Lcoursier_core_Resolution(x$2, x$3, x$4, x$1)
 });
 $c_Lcoursier_core_Resolution.prototype.reverseDependencies$lzycompute__p1__sci_Map = (function() {
   if (((((16 & this.bitmap$0$1) << 24) >> 24) === 0)) {
@@ -53835,24 +53865,7 @@ $c_Lcoursier_core_Missing.prototype.next0__sc_Seq__Lcoursier_core_ResolutionProc
   var jsx$2 = new $c_Lcoursier_core_Missing$$anonfun$2().init___Lcoursier_core_Missing(this);
   var this$2 = $m_sc_Seq$();
   var successes = $as_sc_Seq(results.collect__s_PartialFunction__scg_CanBuildFrom__O(jsx$2, this$2.ReusableCBFInstance$2));
-  var x$1 = this.current$2.errorCache$1.$$plus$plus__sc_GenTraversableOnce__sci_Map(errors);
-  var this$3 = this.current$2;
-  var x$2 = this$3.rootDependencies$1;
-  var this$4 = this.current$2;
-  var x$3 = this$4.dependencies$1;
-  var this$5 = this.current$2;
-  var x$4 = this$5.forceVersions$1;
-  var this$6 = this.current$2;
-  var x$5 = this$6.conflicts$1;
-  var this$7 = this.current$2;
-  var x$6 = this$7.filter$1;
-  var this$8 = this.current$2;
-  var x$7 = this$8.osInfo$1;
-  var this$9 = this.current$2;
-  var x$8 = this$9.jdkVersion$1;
-  var this$10 = this.current$2;
-  var x$9 = this$10.userActivations$1;
-  var current0 = this.current$2.copyWithCache__sc_Seq__sci_Set__sci_Map__sci_Set__sci_Map__s_Option__Lcoursier_core_Activation$Os__s_Option__s_Option__Lcoursier_core_Resolution(x$2, x$3, x$4, x$5, x$1, x$6, x$7, x$8, x$9);
+  var current0 = this.current$2.addToErrorCache__sc_Iterable__Lcoursier_core_Resolution(errors);
   return this.cont0$1__p2__Lcoursier_core_Resolution__sc_Seq__sc_Seq__Lcoursier_core_ResolutionProcess(current0, successes, results)
 });
 $c_Lcoursier_core_Missing.prototype.toString__T = (function() {
@@ -54004,7 +54017,7 @@ $c_Lcoursier_core_Missing.prototype.cont0$1__p2__Lcoursier_core_Resolution__sc_S
             var this$21 = $m_sc_JavaConverters$();
             var m = acc$1.finalDependenciesCache0$1;
             var x$16 = jsx$7.$$plus$plus__sc_GenTraversableOnce__sci_Map($as_sc_GenTraversableOnce($f_sc_convert_DecorateAsScala__mapAsScalaConcurrentMapConverter__ju_concurrent_ConcurrentMap__sc_convert_Decorators$AsScala(this$21, m).asScala__O()));
-            var jsx$10 = acc$1.projectCache$1;
+            var jsx$12 = acc$1.projectCache$1;
             $m_sc_Seq$();
             $m_sjs_js_WrappedArray$();
             var b$1 = new $c_sjs_js_WrappedArray().init___();
@@ -54028,6 +54041,7 @@ $c_Lcoursier_core_Missing.prototype.cont0$1__p2__Lcoursier_core_Resolution__sc_S
                   if ((p2$1 !== null)) {
                     var s = $as_Lcoursier_core_Artifact$Source(p2$1.$$und1__O());
                     var p$1 = $as_Lcoursier_core_Project(p2$1.$$und2__O());
+                    var jsx$11 = acc$1.extraProperties$1;
                     var this$24 = p$1.properties$1;
                     var p$2 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this$1) {
                       return (function(kv$2) {
@@ -54035,10 +54049,12 @@ $c_Lcoursier_core_Missing.prototype.cont0$1__p2__Lcoursier_core_Resolution__sc_S
                         return (!$this$1.forceProperties$1.contains__O__Z(kv.$$und1__O()))
                       })
                     })(acc$1));
-                    var jsx$9 = $as_sc_TraversableLike(this$24.filterImpl__F1__Z__O(p$2, false));
-                    var jsx$8 = acc$1.forceProperties$1;
+                    var jsx$10 = $as_sc_GenTraversableOnce(this$24.filterImpl__F1__Z__O(p$2, false));
                     var this$25 = $m_sc_Seq$();
-                    var x$1$1 = $as_sc_Seq(jsx$9.$$plus$plus__sc_GenTraversableOnce__scg_CanBuildFrom__O(jsx$8, this$25.ReusableCBFInstance$2));
+                    var jsx$9 = $as_sc_TraversableLike(jsx$11.$$plus$plus__sc_GenTraversableOnce__scg_CanBuildFrom__O(jsx$10, this$25.ReusableCBFInstance$2));
+                    var jsx$8 = acc$1.forceProperties$1;
+                    var this$26 = $m_sc_Seq$();
+                    var x$1$1 = $as_sc_Seq(jsx$9.$$plus$plus__sc_GenTraversableOnce__scg_CanBuildFrom__O(jsx$8, this$26.ReusableCBFInstance$2));
                     var x$2$1 = p$1.module$1;
                     var x$3$1 = p$1.version$1;
                     var x$4$1 = p$1.dependencies$1;
@@ -54063,7 +54079,7 @@ $c_Lcoursier_core_Missing.prototype.cont0$1__p2__Lcoursier_core_Resolution__sc_S
               b$1.array$6.push(elem);
               i$2 = ((1 + i$2) | 0)
             };
-            var x$17 = jsx$10.$$plus$plus__sc_GenTraversableOnce__sci_Map(b$1);
+            var x$17 = jsx$12.$$plus$plus__sc_GenTraversableOnce__sci_Map(b$1);
             var x$18 = acc$1.rootDependencies$1;
             var x$19 = acc$1.dependencies$1;
             var x$20 = acc$1.forceVersions$1;
@@ -54074,8 +54090,9 @@ $c_Lcoursier_core_Missing.prototype.cont0$1__p2__Lcoursier_core_Resolution__sc_S
             var x$25 = acc$1.jdkVersion$1;
             var x$26 = acc$1.userActivations$1;
             var x$27 = acc$1.mapDependencies$1;
-            var x$28 = acc$1.forceProperties$1;
-            acc = new $c_Lcoursier_core_Resolution().init___sc_Seq__sci_Set__sci_Map__sci_Set__sci_Map__sci_Map__sci_Map__s_Option__Lcoursier_core_Activation$Os__s_Option__s_Option__s_Option__sci_Map(x$18, x$19, x$20, x$21, x$17, x$22, x$16, x$23, x$24, x$25, x$26, x$27, x$28);
+            var x$28 = acc$1.extraProperties$1;
+            var x$29 = acc$1.forceProperties$1;
+            acc = new $c_Lcoursier_core_Resolution().init___sc_Seq__sci_Set__sci_Map__sci_Set__sci_Map__sci_Map__sci_Map__s_Option__Lcoursier_core_Activation$Os__s_Option__s_Option__s_Option__sc_Seq__sci_Map(x$18, x$19, x$20, x$21, x$17, x$22, x$16, x$23, x$24, x$25, x$26, x$27, x$28, x$29);
             break matchEnd5
           }
         };
@@ -59402,24 +59419,24 @@ $c_Lcoursier_maven_MavenRepository.prototype.withSnapshotVersioning$1__p1__Lcour
       } else if ($is_s_Some(versioningOption)) {
         var x2 = $as_s_Some(versioningOption);
         return $this.findVersioning__Lcoursier_core_Module__T__s_Option__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module$1$1, version$2$1, x2, fetch$1$1, F$2$1).map__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3$1, snapshotVersioning$1) {
-          return (function(x$6$2) {
-            var x$6 = $as_Lcoursier_core_Project(x$6$2);
+          return (function(x$7$2) {
+            var x$7 = $as_Lcoursier_core_Project(x$7$2);
             var x$1 = new $c_s_Some().init___O(snapshotVersioning$1);
-            var x$2 = x$6.module$1;
-            var x$3 = x$6.version$1;
-            var x$4 = x$6.dependencies$1;
-            var x$5 = x$6.configurations$1;
-            var x$6$2$1 = x$6.parent$1;
-            var x$7 = x$6.dependencyManagement$1;
-            var x$8 = x$6.properties$1;
-            var x$9 = x$6.profiles$1;
-            var x$10 = x$6.versions$1;
-            var x$11 = x$6.packagingOpt$1;
-            var x$12 = x$6.relocated$1;
-            var x$13 = x$6.actualVersionOpt$1;
-            var x$14 = x$6.publications$1;
-            var x$15 = x$6.info$1;
-            return new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6$2$1, x$7, x$8, x$9, x$10, x$1, x$11, x$12, x$13, x$14, x$15)
+            var x$2 = x$7.module$1;
+            var x$3 = x$7.version$1;
+            var x$4 = x$7.dependencies$1;
+            var x$5 = x$7.configurations$1;
+            var x$6 = x$7.parent$1;
+            var x$7$2$1 = x$7.dependencyManagement$1;
+            var x$8 = x$7.properties$1;
+            var x$9 = x$7.profiles$1;
+            var x$10 = x$7.versions$1;
+            var x$11 = x$7.packagingOpt$1;
+            var x$12 = x$7.relocated$1;
+            var x$13 = x$7.actualVersionOpt$1;
+            var x$14 = x$7.publications$1;
+            var x$15 = x$7.info$1;
+            return new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6, x$7$2$1, x$8, x$9, x$10, x$1, x$11, x$12, x$13, x$14, x$15)
           })
         })($this, snapshotVersioning)), F$2$1)
       } else {
@@ -59437,7 +59454,7 @@ $c_Lcoursier_maven_MavenRepository.prototype.versions__Lcoursier_core_Module__F1
     var x2 = $as_s_Some(x1);
     var artifact = $as_Lcoursier_core_Artifact(x2.value$2);
     var elem = $as_Lcoursier_util_EitherT(fetch.apply__O__O(artifact)).run$1;
-    var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this) {
+    var f = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, artifact$1) {
       return (function(eitherStr$2) {
         var eitherStr = $as_s_util_Either(eitherStr$2);
         var this$2 = new $c_s_util_Either$RightProjection().init___s_util_Either(eitherStr);
@@ -59467,7 +59484,7 @@ $c_Lcoursier_maven_MavenRepository.prototype.versions__Lcoursier_core_Module__F1
                 var x2$4 = $as_s_util_Right(x1$4);
                 var b$3 = x2$4.value$2;
                 var versions = $as_Lcoursier_core_Versions(b$3);
-                return new $c_s_util_Right().init___O(versions)
+                return new $c_s_util_Right().init___O(new $c_T2().init___O__O(versions, artifact$1.url$1))
               } else {
                 return this$10.e$1
               }
@@ -59481,7 +59498,7 @@ $c_Lcoursier_maven_MavenRepository.prototype.versions__Lcoursier_core_Module__F1
           return this$2.e$1
         }
       })
-    })(this));
+    })(this, artifact));
     var jsx$1 = $f_Lcoursier_util_Monad__map__O__F1__O(F, elem, f)
   } else {
     var jsx$1;
@@ -59496,148 +59513,191 @@ $c_Lcoursier_maven_MavenRepository.prototype.moduleVersionPath__p1__Lcoursier_co
   return $as_sc_Seq(jsx$2.$$colon$plus__O__scg_CanBuildFrom__O(jsx$1, this$1.ReusableCBFInstance$2))
 });
 $c_Lcoursier_maven_MavenRepository.prototype.find__Lcoursier_core_Module__T__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT = (function(module, version, fetch, F) {
-  var this$1 = $m_Lcoursier_core_Parse$().versionInterval__T__s_Option(version);
-  var this$2 = (this$1.isEmpty__Z() ? $m_Lcoursier_core_Parse$().multiVersionInterval__T__s_Option(version) : this$1);
-  var this$3 = (this$2.isEmpty__Z() ? $m_Lcoursier_core_Parse$().ivyLatestSubRevisionInterval__T__s_Option(version) : this$2);
-  if (this$3.isEmpty__Z()) {
+  var v = this.versions__Lcoursier_core_Module__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module, fetch, F);
+  var this$1 = this.changing$1;
+  if (this$1.isEmpty__Z()) {
     var jsx$1 = true
   } else {
-    var arg1 = this$3.get__O();
-    var x$8 = $as_Lcoursier_core_VersionInterval(arg1);
-    var jsx$1 = x$8.isValid__Z()
+    var arg1 = this$1.get__O();
+    var x$9 = $uZ(arg1);
+    var jsx$1 = (!x$9)
   };
-  if (jsx$1) {
-    var x1 = this$3
+  if (((jsx$1 && module.attributes$1.contains__O__Z("scalaVersion")) && module.attributes$1.contains__O__Z("sbtVersion"))) {
+    var versionsF = this.versionsFromListing__p1__Lcoursier_core_Module__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module, fetch, F).orElse__F0__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(this$2, v$1) {
+      return (function() {
+        return v$1
+      })
+    })(this, v)), F)
+  } else {
+    var versionsF = v
+  };
+  var this$3 = $m_Lcoursier_core_Parse$().versionInterval__T__s_Option(version);
+  var this$4 = (this$3.isEmpty__Z() ? $m_Lcoursier_core_Parse$().multiVersionInterval__T__s_Option(version) : this$3);
+  var this$5 = (this$4.isEmpty__Z() ? $m_Lcoursier_core_Parse$().ivyLatestSubRevisionInterval__T__s_Option(version) : this$4);
+  if (this$5.isEmpty__Z()) {
+    var jsx$2 = true
+  } else {
+    var arg1$1 = this$5.get__O();
+    var x$12 = $as_Lcoursier_core_VersionInterval(arg1$1);
+    var jsx$2 = x$12.isValid__Z()
+  };
+  if (jsx$2) {
+    var x1 = this$5
   } else {
     var x1 = $m_s_None$()
   };
   var x = $m_s_None$();
   if ((x === x1)) {
-    return this.findNoInterval__Lcoursier_core_Module__T__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module, version, fetch, F).map__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$4) {
-      return (function(x$9$2) {
-        var x$9 = $as_Lcoursier_core_Project(x$9$2);
-        return new $c_T2().init___O__O(this$4, x$9)
+    return (((version === "LATEST") || (version === "latest.integration")) ? versionsF.flatMap__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$6, F$1, module$1, fetch$1) {
+      return (function(x0$1$2) {
+        var x0$1 = $as_T2(x0$1$2);
+        if ((x0$1 !== null)) {
+          var versions0 = $as_Lcoursier_core_Versions(x0$1.$$und1__O());
+          var versionsUrl = $as_T(x0$1.$$und2__O());
+          var this$7 = new $c_s_Some().init___O(versions0.latest$1);
+          var arg1$2 = this$7.value$2;
+          var x$13 = $as_T(arg1$2);
+          var this$9 = new $c_sci_StringOps().init___T(x$13);
+          if ($f_sc_TraversableOnce__nonEmpty__Z(this$9)) {
+            var this$10 = this$7
+          } else {
+            var this$10 = $m_s_None$()
+          };
+          if (this$10.isEmpty__Z()) {
+            var this$11 = new $c_s_Some().init___O(versions0.release$1);
+            var arg1$3 = this$11.value$2;
+            var x$14 = $as_T(arg1$3);
+            var this$13 = new $c_sci_StringOps().init___T(x$14);
+            if ($f_sc_TraversableOnce__nonEmpty__Z(this$13)) {
+              var this$14 = this$11
+            } else {
+              var this$14 = $m_s_None$()
+            }
+          } else {
+            var this$14 = this$10
+          };
+          if (this$14.isEmpty__Z()) {
+            $m_s_package$();
+            var value = ("No latest or release version found in " + versionsUrl);
+            var eitherVersion = new $c_s_util_Left().init___O(value)
+          } else {
+            $m_s_package$();
+            var value$1 = this$14.get__O();
+            var eitherVersion = new $c_s_util_Right().init___O(value$1)
+          };
+          return this$6.fromEitherVersion$1__p1__s_util_Either__Lcoursier_core_Versions__Lcoursier_util_Monad__Lcoursier_core_Module__F1__Lcoursier_util_EitherT(eitherVersion, versions0, F$1, module$1, fetch$1)
+        } else {
+          throw new $c_s_MatchError().init___O(x0$1)
+        }
       })
-    })(this)), F)
+    })(this, F, module, fetch)), F) : (((version === "RELEASE") || (version === "latest.release")) ? versionsF.flatMap__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$7$1, F$2, module$2, fetch$2) {
+      return (function(x0$2$2) {
+        var x0$2 = $as_T2(x0$2$2);
+        if ((x0$2 !== null)) {
+          var versions0$1 = $as_Lcoursier_core_Versions(x0$2.$$und1__O());
+          var versionsUrl$1 = $as_T(x0$2.$$und2__O());
+          var this$17 = new $c_s_Some().init___O(versions0$1.release$1);
+          var arg1$4 = this$17.value$2;
+          var x$15 = $as_T(arg1$4);
+          var this$19 = new $c_sci_StringOps().init___T(x$15);
+          if ($f_sc_TraversableOnce__nonEmpty__Z(this$19)) {
+            var this$20 = this$17
+          } else {
+            var this$20 = $m_s_None$()
+          };
+          if (this$20.isEmpty__Z()) {
+            $m_s_package$();
+            var value$2 = ("No release version found in " + versionsUrl$1);
+            var eitherVersion$1 = new $c_s_util_Left().init___O(value$2)
+          } else {
+            $m_s_package$();
+            var value$3 = this$20.get__O();
+            var eitherVersion$1 = new $c_s_util_Right().init___O(value$3)
+          };
+          return this$7$1.fromEitherVersion$1__p1__s_util_Either__Lcoursier_core_Versions__Lcoursier_util_Monad__Lcoursier_core_Module__F1__Lcoursier_util_EitherT(eitherVersion$1, versions0$1, F$2, module$2, fetch$2)
+        } else {
+          throw new $c_s_MatchError().init___O(x0$2)
+        }
+      })
+    })(this, F, module, fetch)), F) : this.findNoInterval__Lcoursier_core_Module__T__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module, version, fetch, F).map__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$8$1) {
+      return (function(x$16$2) {
+        var x$16 = $as_Lcoursier_core_Project(x$16$2);
+        return new $c_T2().init___O__O(this$8$1, x$16)
+      })
+    })(this)), F)))
   } else if ($is_s_Some(x1)) {
     var x2 = $as_s_Some(x1);
     var itv = $as_Lcoursier_core_VersionInterval(x2.value$2);
-    var this$5 = this.changing$1;
-    if (this$5.isEmpty__Z()) {
-      var jsx$2 = true
-    } else {
-      var arg1$1 = this$5.get__O();
-      var x$10 = $uZ(arg1$1);
-      var jsx$2 = (!x$10)
-    };
-    if (((jsx$2 && module.attributes$1.contains__O__Z("scalaVersion")) && module.attributes$1.contains__O__Z("sbtVersion"))) {
-      var v0 = this.versionsFromListing__p1__Lcoursier_core_Module__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module, fetch, F).orElse__F0__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(this$6, module$1, fetch$1, F$1) {
-        return (function() {
-          return this$6.versions__Lcoursier_core_Module__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module$1, fetch$1, F$1)
-        })
-      })(this, module, fetch, F)), F)
-    } else {
-      var v0 = this.versions__Lcoursier_core_Module__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module, fetch, F)
-    };
-    return v0.flatMap__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$7, itv$1, version$1, F$2, module$2, fetch$2) {
-      return (function(versions0$2) {
-        var versions0 = $as_Lcoursier_core_Versions(versions0$2);
-        var release = new $c_Lcoursier_core_Version().init___T(versions0.release$1);
-        if (itv$1.contains__Lcoursier_core_Version__Z(release)) {
-          $m_s_package$();
-          var value = versions0.release$1;
-          var eitherVersion = new $c_s_util_Right().init___O(value)
-        } else {
-          var this$10 = versions0.available$1;
-          var f = (function($this) {
-            return (function(x$11$2) {
-              var x$11 = $as_T(x$11$2);
-              return new $c_Lcoursier_core_Version().init___T(x$11)
-            })
-          })(this$7);
-          var this$9 = $m_sci_List$();
-          var bf = this$9.ReusableCBFInstance$2;
-          if ((bf === $m_sci_List$().ReusableCBFInstance$2)) {
-            if ((this$10 === $m_sci_Nil$())) {
-              var jsx$3 = $m_sci_Nil$()
+    return versionsF.flatMap__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$9$1, itv$1, version$1, F$3, module$3, fetch$3) {
+      return (function(x0$3$2) {
+        var x0$3 = $as_T2(x0$3$2);
+        if ((x0$3 !== null)) {
+          var versions0$2 = $as_Lcoursier_core_Versions(x0$3.$$und1__O());
+          var versionsUrl$2 = $as_T(x0$3.$$und2__O());
+          var release = new $c_Lcoursier_core_Version().init___T(versions0$2.release$1);
+          if (itv$1.contains__Lcoursier_core_Version__Z(release)) {
+            $m_s_package$();
+            var value$4 = versions0$2.release$1;
+            var eitherVersion$2 = new $c_s_util_Right().init___O(value$4)
+          } else {
+            var this$25 = versions0$2.available$1;
+            var f = (function($this) {
+              return (function(x$17$2) {
+                var x$17 = $as_T(x$17$2);
+                return new $c_Lcoursier_core_Version().init___T(x$17)
+              })
+            })(this$9$1);
+            var this$24 = $m_sci_List$();
+            var bf = this$24.ReusableCBFInstance$2;
+            if ((bf === $m_sci_List$().ReusableCBFInstance$2)) {
+              if ((this$25 === $m_sci_Nil$())) {
+                var jsx$3 = $m_sci_Nil$()
+              } else {
+                var arg1$5 = this$25.head__O();
+                var h = new $c_sci_$colon$colon().init___O__sci_List(f(arg1$5), $m_sci_Nil$());
+                var t = h;
+                var rest = $as_sci_List(this$25.tail__O());
+                while ((rest !== $m_sci_Nil$())) {
+                  var arg1$6 = rest.head__O();
+                  var nx = new $c_sci_$colon$colon().init___O__sci_List(f(arg1$6), $m_sci_Nil$());
+                  t.tl$5 = nx;
+                  t = nx;
+                  rest = $as_sci_List(rest.tail__O())
+                };
+                var jsx$3 = h
+              }
             } else {
-              var arg1$2 = this$10.head__O();
-              var h = new $c_sci_$colon$colon().init___O__sci_List(f(arg1$2), $m_sci_Nil$());
-              var t = h;
-              var rest = $as_sci_List(this$10.tail__O());
-              while ((rest !== $m_sci_Nil$())) {
-                var arg1$3 = rest.head__O();
-                var nx = new $c_sci_$colon$colon().init___O__sci_List(f(arg1$3), $m_sci_Nil$());
-                t.tl$5 = nx;
-                t = nx;
-                rest = $as_sci_List(rest.tail__O())
+              var b = $f_sc_TraversableLike__builder$1__psc_TraversableLike__scg_CanBuildFrom__scm_Builder(this$25, bf);
+              var these = this$25;
+              while ((!these.isEmpty__Z())) {
+                var arg1$7 = these.head__O();
+                b.$$plus$eq__O__scm_Builder(f(arg1$7));
+                these = $as_sci_List(these.tail__O())
               };
-              var jsx$3 = h
-            }
-          } else {
-            var b = $f_sc_TraversableLike__builder$1__psc_TraversableLike__scg_CanBuildFrom__scm_Builder(this$10, bf);
-            var these = this$10;
-            while ((!these.isEmpty__Z())) {
-              var arg1$4 = these.head__O();
-              b.$$plus$eq__O__scm_Builder(f(arg1$4));
-              these = $as_sci_List(these.tail__O())
+              var jsx$3 = b.result__O()
             };
-            var jsx$3 = b.result__O()
+            var inInterval = $as_sci_List($as_sc_TraversableLike(jsx$3).filter__F1__O(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2$1, itv$1$1) {
+              return (function(version$2) {
+                var version$3 = $as_Lcoursier_core_Version(version$2);
+                return itv$1$1.contains__Lcoursier_core_Version__Z(version$3)
+              })
+            })(this$9$1, itv$1))));
+            if (inInterval.isEmpty__Z()) {
+              $m_s_package$();
+              var value$5 = ((("No version found for " + version$1) + " in ") + versionsUrl$2);
+              var eitherVersion$2 = new $c_s_util_Left().init___O(value$5)
+            } else {
+              $m_s_package$();
+              var this$27 = $m_s_math_Ordering$();
+              var evidence$1 = $m_s_Predef$().singleton$und$less$colon$less$2;
+              var cmp = new $c_s_math_LowPriorityOrderingImplicits$$anon$3().init___s_math_LowPriorityOrderingImplicits__F1(this$27, evidence$1);
+              var value$6 = $as_Lcoursier_core_Version($f_sc_TraversableOnce__max__s_math_Ordering__O(inInterval, cmp)).repr$1;
+              var eitherVersion$2 = new $c_s_util_Right().init___O(value$6)
+            }
           };
-          var inInterval = $as_sci_List($as_sc_TraversableLike(jsx$3).filter__F1__O(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2$1, itv$1$1) {
-            return (function(version$2) {
-              var version$3 = $as_Lcoursier_core_Version(version$2);
-              return itv$1$1.contains__Lcoursier_core_Version__Z(version$3)
-            })
-          })(this$7, itv$1))));
-          if (inInterval.isEmpty__Z()) {
-            $m_s_package$();
-            var value$1 = ("No version found for " + version$1);
-            var eitherVersion = new $c_s_util_Left().init___O(value$1)
-          } else {
-            $m_s_package$();
-            var this$12 = $m_s_math_Ordering$();
-            var evidence$1 = $m_s_Predef$().singleton$und$less$colon$less$2;
-            var cmp = new $c_s_math_LowPriorityOrderingImplicits$$anon$3().init___s_math_LowPriorityOrderingImplicits__F1(this$12, evidence$1);
-            var value$2 = $as_Lcoursier_core_Version($f_sc_TraversableOnce__max__s_math_Ordering__O(inInterval, cmp)).repr$1;
-            var eitherVersion = new $c_s_util_Right().init___O(value$2)
-          }
-        };
-        if ($is_s_util_Left(eitherVersion)) {
-          var x2$1 = $as_s_util_Left(eitherVersion);
-          var reason = $as_T(x2$1.value$2);
-          return new $c_Lcoursier_util_EitherT().init___O(F$2.point__O__O(($m_s_package$(), new $c_s_util_Left().init___O(reason))))
-        } else if ($is_s_util_Right(eitherVersion)) {
-          var x3 = $as_s_util_Right(eitherVersion);
-          var version0 = $as_T(x3.value$2);
-          return this$7.findNoInterval__Lcoursier_core_Module__T__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module$2, version0, fetch$2, F$2).map__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3$1, versions0$1) {
-            return (function(x$12$2) {
-              var x$12 = $as_Lcoursier_core_Project(x$12$2);
-              var x$1 = new $c_s_Some().init___O(versions0$1);
-              var x$2 = x$12.module$1;
-              var x$3 = x$12.version$1;
-              var x$4 = x$12.dependencies$1;
-              var x$5 = x$12.configurations$1;
-              var x$6 = x$12.parent$1;
-              var x$7 = x$12.dependencyManagement$1;
-              var x$8$1 = x$12.properties$1;
-              var x$9$1 = x$12.profiles$1;
-              var x$10$1 = x$12.snapshotVersioning$1;
-              var x$11$1 = x$12.packagingOpt$1;
-              var x$12$2$1 = x$12.relocated$1;
-              var x$13 = x$12.actualVersionOpt$1;
-              var x$14 = x$12.publications$1;
-              var x$15 = x$12.info$1;
-              return new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6, x$7, x$8$1, x$9$1, x$1, x$10$1, x$11$1, x$12$2$1, x$13, x$14, x$15)
-            })
-          })(this$7, versions0)), F$2).map__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$4$1) {
-            return (function(x$13$2) {
-              var x$13$1 = $as_Lcoursier_core_Project(x$13$2);
-              return new $c_T2().init___O__O(this$4$1, x$13$1)
-            })
-          })(this$7)), F$2)
+          return this$9$1.fromEitherVersion$1__p1__s_util_Either__Lcoursier_core_Versions__Lcoursier_util_Monad__Lcoursier_core_Module__F1__Lcoursier_util_EitherT(eitherVersion$2, versions0$2, F$3, module$3, fetch$3)
         } else {
-          throw new $c_s_MatchError().init___O(eitherVersion)
+          throw new $c_s_MatchError().init___O(x0$3)
         }
       })
     })(this, itv, version, F, module, fetch)), F)
@@ -59683,9 +59743,9 @@ $c_Lcoursier_maven_MavenRepository.prototype.findNoInterval__Lcoursier_core_Modu
     })
   })(this, version, F, module, fetch)));
   var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2, version$2) {
-    return (function(x$7$2) {
-      var x$7 = $as_s_util_Either(x$7$2);
-      var this$1 = new $c_s_util_Either$RightProjection().init___s_util_Either(x$7);
+    return (function(x$8$2) {
+      var x$8 = $as_s_util_Either(x$8$2);
+      var this$1 = new $c_s_util_Either$RightProjection().init___s_util_Either(x$8);
       var x1 = this$1.e$1;
       if ($is_s_util_Right(x1)) {
         var x2 = $as_s_util_Right(x1);
@@ -59697,8 +59757,8 @@ $c_Lcoursier_maven_MavenRepository.prototype.findNoInterval__Lcoursier_core_Modu
         var x$4 = proj.dependencies$1;
         var x$5 = proj.configurations$1;
         var x$6 = proj.parent$1;
-        var x$7$1 = proj.dependencyManagement$1;
-        var x$8 = proj.properties$1;
+        var x$7 = proj.dependencyManagement$1;
+        var x$8$1 = proj.properties$1;
         var x$9 = proj.profiles$1;
         var x$10 = proj.versions$1;
         var x$11 = proj.snapshotVersioning$1;
@@ -59706,7 +59766,7 @@ $c_Lcoursier_maven_MavenRepository.prototype.findNoInterval__Lcoursier_core_Modu
         var x$13 = proj.relocated$1;
         var x$14 = proj.publications$1;
         var x$15 = proj.info$1;
-        return new $c_s_util_Right().init___O(new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6, x$7$1, x$8, x$9, x$10, x$11, x$12, x$13, x$1, x$14, x$15))
+        return new $c_s_util_Right().init___O(new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6, x$7, x$8$1, x$9, x$10, x$11, x$12, x$13, x$1, x$14, x$15))
       } else {
         return this$1.e$1
       }
@@ -59797,9 +59857,57 @@ $c_Lcoursier_maven_MavenRepository.prototype.versionsFromListing__p1__Lcoursier_
           var res = new $c_s_util_Right().init___O(value$2)
         }
       };
-      return new $c_Lcoursier_util_EitherT().init___O(F$1.point__O__O(res))
+      var this$11 = new $c_s_util_Either$RightProjection().init___s_util_Either(res);
+      var x1 = this$11.e$1;
+      if ($is_s_util_Right(x1)) {
+        var x2$1 = $as_s_util_Right(x1);
+        var b = x2$1.value$2;
+        var x$6 = $as_Lcoursier_core_Versions(b);
+        var jsx$6 = new $c_s_util_Right().init___O(new $c_T2().init___O__O(x$6, listingUrl$1))
+      } else {
+        var jsx$6 = this$11.e$1
+      };
+      return new $c_Lcoursier_util_EitherT().init___O(F$1.point__O__O(jsx$6))
     })
   })(this, listingUrl, F)), F)
+});
+$c_Lcoursier_maven_MavenRepository.prototype.fromEitherVersion$1__p1__s_util_Either__Lcoursier_core_Versions__Lcoursier_util_Monad__Lcoursier_core_Module__F1__Lcoursier_util_EitherT = (function(eitherVersion, versions0, F$4, module$2, fetch$2) {
+  if ($is_s_util_Left(eitherVersion)) {
+    var x2 = $as_s_util_Left(eitherVersion);
+    var reason = $as_T(x2.value$2);
+    return new $c_Lcoursier_util_EitherT().init___O(F$4.point__O__O(($m_s_package$(), new $c_s_util_Left().init___O(reason))))
+  } else if ($is_s_util_Right(eitherVersion)) {
+    var x3 = $as_s_util_Right(eitherVersion);
+    var version0 = $as_T(x3.value$2);
+    return this.findNoInterval__Lcoursier_core_Module__T__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module$2, version0, fetch$2, F$4).map__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, versions0$1) {
+      return (function(x$10$2) {
+        var x$10 = $as_Lcoursier_core_Project(x$10$2);
+        var x$1 = new $c_s_Some().init___O(versions0$1);
+        var x$2 = x$10.module$1;
+        var x$3 = x$10.version$1;
+        var x$4 = x$10.dependencies$1;
+        var x$5 = x$10.configurations$1;
+        var x$6 = x$10.parent$1;
+        var x$7 = x$10.dependencyManagement$1;
+        var x$8 = x$10.properties$1;
+        var x$9 = x$10.profiles$1;
+        var x$10$2$1 = x$10.snapshotVersioning$1;
+        var x$11 = x$10.packagingOpt$1;
+        var x$12 = x$10.relocated$1;
+        var x$13 = x$10.actualVersionOpt$1;
+        var x$14 = x$10.publications$1;
+        var x$15 = x$10.info$1;
+        return new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6, x$7, x$8, x$9, x$1, x$10$2$1, x$11, x$12, x$13, x$14, x$15)
+      })
+    })(this, versions0)), F$4).map__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2) {
+      return (function(x$11$2) {
+        var x$11$1 = $as_Lcoursier_core_Project(x$11$2);
+        return new $c_T2().init___O__O(this$2, x$11$1)
+      })
+    })(this)), F$4)
+  } else {
+    throw new $c_s_MatchError().init___O(eitherVersion)
+  }
 });
 function $is_Lcoursier_maven_MavenRepository(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lcoursier_maven_MavenRepository)))
