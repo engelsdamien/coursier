@@ -2,11 +2,29 @@ package coursier
 
 import java.io.File
 
+import scala.collection.mutable.ListBuffer
+
 sealed abstract class FileError(
   val `type`: String,
-  val message: String
+  val message: String,
+  val causeOpt: Option[Throwable] = None
 ) extends Product with Serializable {
-  def describe: String = s"${`type`}: $message"
+  def describe: String = {
+    val b = new ListBuffer[String]
+    b += s"${`type`}: $message"
+
+    def addEx(t: Throwable): Unit =
+      if (t != null) {
+        b += t.toString
+        for (l <- t.getStackTrace)
+          b += "  " + l
+        addEx(t.getCause)
+      }
+
+    causeOpt.foreach(addEx)
+
+    b.mkString("\n")
+  }
 
   final def notFound: Boolean = this match {
     case _: FileError.NotFound => true
@@ -16,9 +34,10 @@ sealed abstract class FileError(
 
 object FileError {
 
-  final case class DownloadError(reason: String) extends FileError(
+  final case class DownloadError(reason: String, causeOpt0: Option[Throwable] = None) extends FileError(
     "download error",
-    reason
+    reason,
+    causeOpt0
   )
 
   final case class NotFound(

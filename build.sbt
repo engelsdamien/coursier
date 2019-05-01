@@ -87,7 +87,8 @@ lazy val cache = crossProject
   .disablePlugins(ScriptedPlugin)
   .dependsOn(core)
   .jvmSettings(
-    addPathsSources
+    addPathsSources,
+    libs += Deps.okhttpUrlConnection
   )
   .jsSettings(
     name := "fetch-js"

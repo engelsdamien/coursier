@@ -312,6 +312,8 @@ final case class MavenRepository(
     def parseRawPom(str: String) =
       for {
         xml <- compatibility.xmlParse(str).right
+        _ = assert(xml != null, "xml is null")
+        _ = assert(xml.label != null, "xml.label is null")
         _ <- (if (xml.label == "project") Right(()) else Left("Project definition not found")).right
         proj <- Pom.project(xml, relocationAsDependency = true).right
       } yield proj

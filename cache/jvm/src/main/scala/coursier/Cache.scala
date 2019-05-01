@@ -18,11 +18,16 @@ import java.util.Base64
 
 import coursier.util.{EitherT, Schedulable}
 
+import scala.collection.JavaConverters._
 import scala.concurrent.duration.{Duration, DurationInt}
 import scala.util.Try
 import scala.util.control.NonFatal
 
 object Cache {
+
+  println("loggers:")
+  sun.util.logging.LoggingSupport.getLoggerNames.asScala.map("  " + _).foreach(println)
+  println()
 
   private[coursier] def closeConn(conn: URLConnection): Unit = {
     Try(conn.getInputStream).toOption.filter(_ != null).foreach(_.close())
@@ -178,9 +183,7 @@ object Cache {
             None
           case NonFatal(e) =>
             Some(Left(
-              FileError.DownloadError(
-                s"Caught $e${Option(e.getMessage).fold("")(" (" + _ + ")")} while downloading $url"
-              )
+              FileError.DownloadError(s"Caught $e while downloading $url", Some(e))
             ))
         }
 
@@ -200,28 +203,31 @@ object Cache {
   private val handlerClsCache = new ConcurrentHashMap[String, Option[URLStreamHandler]]
 
   private def handlerFor(url: String): Option[URLStreamHandler] = {
+
     val protocol = url.takeWhile(_ != ':')
 
-    Option(handlerClsCache.get(protocol)) match {
-      case None =>
-        val clsName = s"coursier.cache.protocol.${protocol.capitalize}Handler"
-        def clsOpt(loader: ClassLoader): Option[Class[_]] =
-          try Some(loader.loadClass(clsName))
-          catch {
-            case _: ClassNotFoundException =>
-              None
-          }
+    if (!handlerClsCache.containsKey(protocol)) {
 
-        val clsOpt0: Option[Class[_]] = clsOpt(Thread.currentThread().getContextClassLoader)
-          .orElse(clsOpt(getClass.getClassLoader))
+      val clsName = s"coursier.cache.protocol.${protocol.capitalize}Handler"
 
-        def printError(e: Exception): Unit =
-          scala.Console.err.println(
-            s"Cannot instantiate $clsName: $e${Option(e.getMessage).fold("")(" ("+_+")")}"
-          )
+      val handlerFactoryOpt =
+        if (coursier.core.compatibility.reflectionAllowed) {
+          def clsOpt(loader: ClassLoader): Option[Class[_]] =
+            try Some(loader.loadClass(clsName))
+            catch {
+              case _: ClassNotFoundException =>
+                None
+            }
 
-        val handlerFactoryOpt = clsOpt0.flatMap {
-          cls =>
+          val clsOpt0: Option[Class[_]] = clsOpt(Thread.currentThread().getContextClassLoader)
+            .orElse(clsOpt(getClass.getClassLoader))
+
+          def printError(e: Exception): Unit =
+            scala.Console.err.println(
+              s"Cannot instantiate $clsName: $e${Option(e.getMessage).fold("")(" (" + _ + ")")}"
+            )
+
+          clsOpt0.flatMap { cls =>
             try Some(cls.newInstance().asInstanceOf[URLStreamHandlerFactory])
             catch {
               case e: InstantiationException =>
@@ -234,26 +240,27 @@ object Cache {
                 printError(e)
                 None
             }
+          }
+        } else if (protocol == "http")
+          Some(new coursier.cache.protocol.HttpHandler)
+        else
+          None
+
+      val handlerOpt = handlerFactoryOpt.flatMap { factory =>
+        try Some(factory.createURLStreamHandler(protocol))
+        catch {
+          case NonFatal(e) =>
+            scala.Console.err.println(
+              s"Cannot get handler for $protocol from $clsName: $e${Option(e.getMessage).fold("")(" (" + _ + ")")}"
+            )
+            None
         }
+      }
 
-        val handlerOpt = handlerFactoryOpt.flatMap {
-          factory =>
-            try Some(factory.createURLStreamHandler(protocol))
-            catch {
-              case NonFatal(e) =>
-                scala.Console.err.println(
-                  s"Cannot get handler for $protocol from $clsName: $e${Option(e.getMessage).fold("")(" ("+_+")")}"
-                )
-                None
-            }
-        }
-
-        val prevOpt = Option(handlerClsCache.putIfAbsent(protocol, handlerOpt))
-        prevOpt.getOrElse(handlerOpt)
-
-      case Some(handlerOpt) =>
-        handlerOpt
+      handlerClsCache.putIfAbsent(protocol, handlerOpt)
     }
+
+    handlerClsCache.get(protocol)
   }
 
   private val BasicRealm = (
@@ -1128,7 +1135,15 @@ object Cache {
     throw new Exception("Cannot happen")
   )
 
-  lazy val default: File = CachePath.defaultCacheDirectory()
+  lazy val default: File = {
+
+    scala.Console.err.println("Env:")
+    for ((k, v) <- sys.env)
+      scala.Console.err.println(s"  $k=$v")
+    scala.Console.err.println("")
+
+    CachePath.defaultCacheDirectory()
+  }
 
   val defaultConcurrentDownloadCount = 6
 
