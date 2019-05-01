@@ -59250,6 +59250,9 @@ $c_Lcoursier_maven_MavenRepository.prototype.snapshotVersioning__Lcoursier_core_
 $c_Lcoursier_maven_MavenRepository.prototype.productPrefix__T = (function() {
   return "MavenRepository"
 });
+$c_Lcoursier_maven_MavenRepository.prototype.artifactFor__T__Z__Lcoursier_core_Artifact = (function(url, changing) {
+  return new $c_Lcoursier_core_Artifact().init___T__sci_Map__sci_Map__Z__Z__s_Option(url, $m_sci_Map$EmptyMap$(), $m_sci_Map$EmptyMap$(), changing, false, this.authentication$1)
+});
 $c_Lcoursier_maven_MavenRepository.prototype.findVersioning__Lcoursier_core_Module__T__s_Option__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT = (function(module, version, versioningValue, fetch, F) {
   var projectArtifact0 = this.projectArtifact__Lcoursier_core_Module__T__s_Option__Lcoursier_core_Artifact(module, version, versioningValue);
   return $as_Lcoursier_util_EitherT(fetch.apply__O__O(projectArtifact0)).flatMap__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, F$1, version$1) {
@@ -59305,7 +59308,7 @@ $c_Lcoursier_maven_MavenRepository.prototype.snapshotVersioningArtifact__Lcoursi
   var path = $as_sc_Seq(jsx$1.$$colon$plus__O__scg_CanBuildFrom__O("maven-metadata.xml", this$1.ReusableCBFInstance$2));
   var jsx$3 = $m_Lcoursier_core_Repository$ArtifactExtensions$();
   var jsx$2 = $m_Lcoursier_core_Repository$ArtifactExtensions$();
-  var underlying = new $c_Lcoursier_core_Artifact().init___T__sci_Map__sci_Map__Z__Z__s_Option(this.urlFor__p1__sc_Seq__T(path), $m_sci_Map$EmptyMap$(), $m_sci_Map$EmptyMap$(), true, false, this.authentication$1);
+  var underlying = new $c_Lcoursier_core_Artifact().init___T__sci_Map__sci_Map__Z__Z__s_Option(this.urlFor__sc_Seq__Z__T(path, false), $m_sci_Map$EmptyMap$(), $m_sci_Map$EmptyMap$(), true, false, this.authentication$1);
   var underlying$1 = jsx$2.withDefaultChecksums$extension__Lcoursier_core_Artifact__Lcoursier_core_Artifact(underlying);
   var artifact = jsx$3.withDefaultSignature$extension__Lcoursier_core_Artifact__Lcoursier_core_Artifact(underlying$1);
   return new $c_s_Some().init___O(artifact)
@@ -59369,7 +59372,7 @@ $c_Lcoursier_maven_MavenRepository.prototype.versionsArtifact__Lcoursier_core_Mo
   var path = $as_sc_Seq($f_sc_TraversableLike__$$plus$plus__sc_GenTraversableOnce__scg_CanBuildFrom__O(this$8, that, bf));
   var jsx$3 = $m_Lcoursier_core_Repository$ArtifactExtensions$();
   var jsx$2 = $m_Lcoursier_core_Repository$ArtifactExtensions$();
-  var underlying = new $c_Lcoursier_core_Artifact().init___T__sci_Map__sci_Map__Z__Z__s_Option(this.urlFor__p1__sc_Seq__T(path), $m_sci_Map$EmptyMap$(), $m_sci_Map$EmptyMap$(), true, false, this.authentication$1);
+  var underlying = new $c_Lcoursier_core_Artifact().init___T__sci_Map__sci_Map__Z__Z__s_Option(this.urlFor__sc_Seq__Z__T(path, false), $m_sci_Map$EmptyMap$(), $m_sci_Map$EmptyMap$(), true, false, this.authentication$1);
   var underlying$1 = jsx$2.withDefaultChecksums$extension__Lcoursier_core_Artifact__Lcoursier_core_Artifact(underlying);
   var artifact = jsx$3.withDefaultSignature$extension__Lcoursier_core_Artifact__Lcoursier_core_Artifact(underlying$1);
   return new $c_s_Some().init___O(artifact)
@@ -59385,16 +59388,13 @@ $c_Lcoursier_maven_MavenRepository.prototype.projectArtifact__Lcoursier_core_Mod
   var path = $as_sc_Seq(jsx$3.$$colon$plus__O__scg_CanBuildFrom__O((((jsx$2 + "-") + jsx$1) + ".pom"), this$1.ReusableCBFInstance$2));
   var jsx$8 = $m_Lcoursier_core_Repository$ArtifactExtensions$();
   var jsx$7 = $m_Lcoursier_core_Repository$ArtifactExtensions$();
-  var jsx$6 = this.urlFor__p1__sc_Seq__T(path);
+  var jsx$6 = this.urlFor__sc_Seq__Z__T(path, false);
   var jsx$5 = $m_sci_Map$EmptyMap$();
   var jsx$4 = $m_sci_Map$EmptyMap$();
   var this$4 = this.changing$1;
   var underlying = new $c_Lcoursier_core_Artifact().init___T__sci_Map__sci_Map__Z__Z__s_Option(jsx$6, jsx$5, jsx$4, $uZ((this$4.isEmpty__Z() ? $m_Lcoursier_maven_MavenRepository$().isSnapshot__T__Z(version) : this$4.get__O())), false, this.authentication$1);
   var underlying$1 = jsx$7.withDefaultChecksums$extension__Lcoursier_core_Artifact__Lcoursier_core_Artifact(underlying);
   return jsx$8.withDefaultSignature$extension__Lcoursier_core_Artifact__Lcoursier_core_Artifact(underlying$1)
-});
-$c_Lcoursier_maven_MavenRepository.prototype.artifactFor__p1__T__Z__Lcoursier_core_Artifact = (function(url, changing) {
-  return new $c_Lcoursier_core_Artifact().init___T__sci_Map__sci_Map__Z__Z__s_Option(url, $m_sci_Map$EmptyMap$(), $m_sci_Map$EmptyMap$(), changing, false, this.authentication$1)
 });
 $c_Lcoursier_maven_MavenRepository.prototype.modulePath__p1__Lcoursier_core_Module__sc_Seq = (function(module) {
   var x = module.organization$1;
@@ -59419,24 +59419,24 @@ $c_Lcoursier_maven_MavenRepository.prototype.withSnapshotVersioning$1__p1__Lcour
       } else if ($is_s_Some(versioningOption)) {
         var x2 = $as_s_Some(versioningOption);
         return $this.findVersioning__Lcoursier_core_Module__T__s_Option__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module$1$1, version$2$1, x2, fetch$1$1, F$2$1).map__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3$1, snapshotVersioning$1) {
-          return (function(x$7$2) {
-            var x$7 = $as_Lcoursier_core_Project(x$7$2);
+          return (function(x$8$2) {
+            var x$8 = $as_Lcoursier_core_Project(x$8$2);
             var x$1 = new $c_s_Some().init___O(snapshotVersioning$1);
-            var x$2 = x$7.module$1;
-            var x$3 = x$7.version$1;
-            var x$4 = x$7.dependencies$1;
-            var x$5 = x$7.configurations$1;
-            var x$6 = x$7.parent$1;
-            var x$7$2$1 = x$7.dependencyManagement$1;
-            var x$8 = x$7.properties$1;
-            var x$9 = x$7.profiles$1;
-            var x$10 = x$7.versions$1;
-            var x$11 = x$7.packagingOpt$1;
-            var x$12 = x$7.relocated$1;
-            var x$13 = x$7.actualVersionOpt$1;
-            var x$14 = x$7.publications$1;
-            var x$15 = x$7.info$1;
-            return new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6, x$7$2$1, x$8, x$9, x$10, x$1, x$11, x$12, x$13, x$14, x$15)
+            var x$2 = x$8.module$1;
+            var x$3 = x$8.version$1;
+            var x$4 = x$8.dependencies$1;
+            var x$5 = x$8.configurations$1;
+            var x$6 = x$8.parent$1;
+            var x$7 = x$8.dependencyManagement$1;
+            var x$8$2$1 = x$8.properties$1;
+            var x$9 = x$8.profiles$1;
+            var x$10 = x$8.versions$1;
+            var x$11 = x$8.packagingOpt$1;
+            var x$12 = x$8.relocated$1;
+            var x$13 = x$8.actualVersionOpt$1;
+            var x$14 = x$8.publications$1;
+            var x$15 = x$8.info$1;
+            return new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6, x$7, x$8$2$1, x$9, x$10, x$1, x$11, x$12, x$13, x$14, x$15)
           })
         })($this, snapshotVersioning)), F$2$1)
       } else {
@@ -59519,8 +59519,8 @@ $c_Lcoursier_maven_MavenRepository.prototype.find__Lcoursier_core_Module__T__F1_
     var jsx$1 = true
   } else {
     var arg1 = this$1.get__O();
-    var x$9 = $uZ(arg1);
-    var jsx$1 = (!x$9)
+    var x$10 = $uZ(arg1);
+    var jsx$1 = (!x$10)
   };
   if (((jsx$1 && module.attributes$1.contains__O__Z("scalaVersion")) && module.attributes$1.contains__O__Z("sbtVersion"))) {
     var versionsF = this.versionsFromListing__p1__Lcoursier_core_Module__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module, fetch, F).orElse__F0__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(this$2, v$1) {
@@ -59538,8 +59538,8 @@ $c_Lcoursier_maven_MavenRepository.prototype.find__Lcoursier_core_Module__T__F1_
     var jsx$2 = true
   } else {
     var arg1$1 = this$5.get__O();
-    var x$12 = $as_Lcoursier_core_VersionInterval(arg1$1);
-    var jsx$2 = x$12.isValid__Z()
+    var x$13 = $as_Lcoursier_core_VersionInterval(arg1$1);
+    var jsx$2 = x$13.isValid__Z()
   };
   if (jsx$2) {
     var x1 = this$5
@@ -59556,8 +59556,8 @@ $c_Lcoursier_maven_MavenRepository.prototype.find__Lcoursier_core_Module__T__F1_
           var versionsUrl = $as_T(x0$1.$$und2__O());
           var this$7 = new $c_s_Some().init___O(versions0.latest$1);
           var arg1$2 = this$7.value$2;
-          var x$13 = $as_T(arg1$2);
-          var this$9 = new $c_sci_StringOps().init___T(x$13);
+          var x$14 = $as_T(arg1$2);
+          var this$9 = new $c_sci_StringOps().init___T(x$14);
           if ($f_sc_TraversableOnce__nonEmpty__Z(this$9)) {
             var this$10 = this$7
           } else {
@@ -59566,8 +59566,8 @@ $c_Lcoursier_maven_MavenRepository.prototype.find__Lcoursier_core_Module__T__F1_
           if (this$10.isEmpty__Z()) {
             var this$11 = new $c_s_Some().init___O(versions0.release$1);
             var arg1$3 = this$11.value$2;
-            var x$14 = $as_T(arg1$3);
-            var this$13 = new $c_sci_StringOps().init___T(x$14);
+            var x$15 = $as_T(arg1$3);
+            var this$13 = new $c_sci_StringOps().init___T(x$15);
             if ($f_sc_TraversableOnce__nonEmpty__Z(this$13)) {
               var this$14 = this$11
             } else {
@@ -59598,8 +59598,8 @@ $c_Lcoursier_maven_MavenRepository.prototype.find__Lcoursier_core_Module__T__F1_
           var versionsUrl$1 = $as_T(x0$2.$$und2__O());
           var this$17 = new $c_s_Some().init___O(versions0$1.release$1);
           var arg1$4 = this$17.value$2;
-          var x$15 = $as_T(arg1$4);
-          var this$19 = new $c_sci_StringOps().init___T(x$15);
+          var x$16 = $as_T(arg1$4);
+          var this$19 = new $c_sci_StringOps().init___T(x$16);
           if ($f_sc_TraversableOnce__nonEmpty__Z(this$19)) {
             var this$20 = this$17
           } else {
@@ -59620,9 +59620,9 @@ $c_Lcoursier_maven_MavenRepository.prototype.find__Lcoursier_core_Module__T__F1_
         }
       })
     })(this, F, module, fetch)), F) : this.findNoInterval__Lcoursier_core_Module__T__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module, version, fetch, F).map__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$8$1) {
-      return (function(x$16$2) {
-        var x$16 = $as_Lcoursier_core_Project(x$16$2);
-        return new $c_T2().init___O__O(this$8$1, x$16)
+      return (function(x$17$2) {
+        var x$17 = $as_Lcoursier_core_Project(x$17$2);
+        return new $c_T2().init___O__O(this$8$1, x$17)
       })
     })(this)), F)))
   } else if ($is_s_Some(x1)) {
@@ -59642,9 +59642,9 @@ $c_Lcoursier_maven_MavenRepository.prototype.find__Lcoursier_core_Module__T__F1_
           } else {
             var this$25 = versions0$2.available$1;
             var f = (function($this) {
-              return (function(x$17$2) {
-                var x$17 = $as_T(x$17$2);
-                return new $c_Lcoursier_core_Version().init___T(x$17)
+              return (function(x$18$2) {
+                var x$18 = $as_T(x$18$2);
+                return new $c_Lcoursier_core_Version().init___T(x$18)
               })
             })(this$9$1);
             var this$24 = $m_sci_List$();
@@ -59705,17 +59705,6 @@ $c_Lcoursier_maven_MavenRepository.prototype.find__Lcoursier_core_Module__T__F1_
     throw new $c_s_MatchError().init___O(x1)
   }
 });
-$c_Lcoursier_maven_MavenRepository.prototype.urlFor__p1__sc_Seq__T = (function(path) {
-  var jsx$2 = this.root0$1;
-  var jsx$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this) {
-    return (function(s$2) {
-      var s = $as_T(s$2);
-      return $m_Lcoursier_core_compatibility_package$().encodeURIComponent__T__T(s)
-    })
-  })(this));
-  var this$1 = $m_sc_Seq$();
-  return (("" + jsx$2) + $as_sc_TraversableOnce(path.map__F1__scg_CanBuildFrom__O(jsx$1, this$1.ReusableCBFInstance$2)).mkString__T__T("/"))
-});
 $c_Lcoursier_maven_MavenRepository.prototype.hashCode__I = (function() {
   var acc = (-889275714);
   acc = $m_sr_Statics$().mix__I__I__I(acc, $m_sr_Statics$().anyHash__O__I(this.root$1));
@@ -59743,9 +59732,9 @@ $c_Lcoursier_maven_MavenRepository.prototype.findNoInterval__Lcoursier_core_Modu
     })
   })(this, version, F, module, fetch)));
   var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2, version$2) {
-    return (function(x$8$2) {
-      var x$8 = $as_s_util_Either(x$8$2);
-      var this$1 = new $c_s_util_Either$RightProjection().init___s_util_Either(x$8);
+    return (function(x$9$2) {
+      var x$9 = $as_s_util_Either(x$9$2);
+      var this$1 = new $c_s_util_Either$RightProjection().init___s_util_Either(x$9);
       var x1 = this$1.e$1;
       if ($is_s_util_Right(x1)) {
         var x2 = $as_s_util_Right(x1);
@@ -59758,15 +59747,15 @@ $c_Lcoursier_maven_MavenRepository.prototype.findNoInterval__Lcoursier_core_Modu
         var x$5 = proj.configurations$1;
         var x$6 = proj.parent$1;
         var x$7 = proj.dependencyManagement$1;
-        var x$8$1 = proj.properties$1;
-        var x$9 = proj.profiles$1;
+        var x$8 = proj.properties$1;
+        var x$9$1 = proj.profiles$1;
         var x$10 = proj.versions$1;
         var x$11 = proj.snapshotVersioning$1;
         var x$12 = proj.packagingOpt$1;
         var x$13 = proj.relocated$1;
         var x$14 = proj.publications$1;
         var x$15 = proj.info$1;
-        return new $c_s_util_Right().init___O(new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6, x$7, x$8$1, x$9, x$10, x$11, x$12, x$13, x$1, x$14, x$15))
+        return new $c_s_util_Right().init___O(new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6, x$7, x$8, x$9$1, x$10, x$11, x$12, x$13, x$1, x$14, x$15))
       } else {
         return this$1.e$1
       }
@@ -59776,6 +59765,37 @@ $c_Lcoursier_maven_MavenRepository.prototype.findNoInterval__Lcoursier_core_Modu
 });
 $c_Lcoursier_maven_MavenRepository.prototype.productIterator__sc_Iterator = (function() {
   return new $c_sr_ScalaRunTime$$anon$1().init___s_Product(this)
+});
+$c_Lcoursier_maven_MavenRepository.prototype.urlFor__sc_Seq__Z__T = (function(path, isDir) {
+  var jsx$6 = this.root0$1;
+  if (isDir) {
+    var jsx$4 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this) {
+      return (function(s$2) {
+        var s = $as_T(s$2);
+        return $m_Lcoursier_core_compatibility_package$().encodeURIComponent__T__T(s)
+      })
+    })(this));
+    var this$1 = $m_sc_Seq$();
+    var jsx$3 = $as_sc_TraversableLike(path.map__F1__scg_CanBuildFrom__O(jsx$4, this$1.ReusableCBFInstance$2));
+    var jsx$2 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2) {
+      return (function(x$3$2) {
+        var x$3 = $as_T(x$3$2);
+        return (x$3 + "/")
+      })
+    })(this));
+    var this$3 = $m_sc_Seq$();
+    var jsx$1 = $as_sc_TraversableOnce(jsx$3.map__F1__scg_CanBuildFrom__O(jsx$2, this$3.ReusableCBFInstance$2)).mkString__T()
+  } else {
+    var jsx$5 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3$1) {
+      return (function(s$3$2) {
+        var s$3 = $as_T(s$3$2);
+        return $m_Lcoursier_core_compatibility_package$().encodeURIComponent__T__T(s$3)
+      })
+    })(this));
+    var this$4 = $m_sc_Seq$();
+    var jsx$1 = $as_sc_TraversableOnce(path.map__F1__scg_CanBuildFrom__O(jsx$5, this$4.ReusableCBFInstance$2)).mkString__T__T("/")
+  };
+  return (("" + jsx$6) + jsx$1)
 });
 $c_Lcoursier_maven_MavenRepository.prototype.init___T__s_Option__Z__s_Option = (function(root, changing, sbtAttrStub, authentication) {
   this.root$1 = root;
@@ -59787,8 +59807,8 @@ $c_Lcoursier_maven_MavenRepository.prototype.init___T__s_Option__Z__s_Option = (
   return this
 });
 $c_Lcoursier_maven_MavenRepository.prototype.versionsFromListing__p1__Lcoursier_core_Module__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT = (function(module, fetch, F) {
-  var listingUrl = (this.urlFor__p1__sc_Seq__T(this.modulePath__p1__Lcoursier_core_Module__sc_Seq(module)) + "/");
-  var listingArtifact = this.artifactFor__p1__T__Z__Lcoursier_core_Artifact(listingUrl, true);
+  var listingUrl = (this.urlFor__sc_Seq__Z__T(this.modulePath__p1__Lcoursier_core_Module__sc_Seq(module), false) + "/");
+  var listingArtifact = this.artifactFor__T__Z__Lcoursier_core_Artifact(listingUrl, true);
   return $as_Lcoursier_util_EitherT(fetch.apply__O__O(listingArtifact)).flatMap__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, listingUrl$1, F$1) {
     return (function(listing$2) {
       var listing = $as_T(listing$2);
@@ -59805,17 +59825,17 @@ $c_Lcoursier_maven_MavenRepository.prototype.versionsFromListing__p1__Lcoursier_
         var res = new $c_s_util_Left().init___O(value)
       } else {
         var jsx$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this$1) {
-          return (function(x$3$2) {
-            var x$3 = $as_T(x$3$2);
-            return new $c_Lcoursier_core_Version().init___T(x$3)
+          return (function(x$4$2) {
+            var x$4 = $as_T(x$4$2);
+            return new $c_Lcoursier_core_Version().init___T(x$4)
           })
         })($this));
         var this$5 = $m_sc_Seq$();
         var parsedVersions = $as_sc_Seq(rawVersions.map__F1__scg_CanBuildFrom__O(jsx$1, this$5.ReusableCBFInstance$2));
         var p = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2$1) {
-          return (function(x$4$2) {
-            var x$4 = $as_Lcoursier_core_Version(x$4$2);
-            var this$6 = x$4.items__sci_List();
+          return (function(x$5$2) {
+            var x$5 = $as_Lcoursier_core_Version(x$5$2);
+            var this$6 = x$5.items__sci_List();
             var these = this$6;
             while ((!these.isEmpty__Z())) {
               var arg1 = these.head__O();
@@ -59847,9 +59867,9 @@ $c_Lcoursier_maven_MavenRepository.prototype.versionsFromListing__p1__Lcoursier_
           var jsx$5 = latest.repr$1;
           var jsx$4 = latest.repr$1;
           var jsx$3 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3$1) {
-            return (function(x$5$2) {
-              var x$5 = $as_Lcoursier_core_Version(x$5$2);
-              return x$5.repr$1
+            return (function(x$6$2) {
+              var x$6 = $as_Lcoursier_core_Version(x$6$2);
+              return x$6.repr$1
             })
           })($this));
           var this$9 = $m_sc_Seq$();
@@ -59862,8 +59882,8 @@ $c_Lcoursier_maven_MavenRepository.prototype.versionsFromListing__p1__Lcoursier_
       if ($is_s_util_Right(x1)) {
         var x2$1 = $as_s_util_Right(x1);
         var b = x2$1.value$2;
-        var x$6 = $as_Lcoursier_core_Versions(b);
-        var jsx$6 = new $c_s_util_Right().init___O(new $c_T2().init___O__O(x$6, listingUrl$1))
+        var x$7 = $as_Lcoursier_core_Versions(b);
+        var jsx$6 = new $c_s_util_Right().init___O(new $c_T2().init___O__O(x$7, listingUrl$1))
       } else {
         var jsx$6 = this$11.e$1
       };
@@ -59880,29 +59900,29 @@ $c_Lcoursier_maven_MavenRepository.prototype.fromEitherVersion$1__p1__s_util_Eit
     var x3 = $as_s_util_Right(eitherVersion);
     var version0 = $as_T(x3.value$2);
     return this.findNoInterval__Lcoursier_core_Module__T__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module$2, version0, fetch$2, F$4).map__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, versions0$1) {
-      return (function(x$10$2) {
-        var x$10 = $as_Lcoursier_core_Project(x$10$2);
+      return (function(x$11$2) {
+        var x$11 = $as_Lcoursier_core_Project(x$11$2);
         var x$1 = new $c_s_Some().init___O(versions0$1);
-        var x$2 = x$10.module$1;
-        var x$3 = x$10.version$1;
-        var x$4 = x$10.dependencies$1;
-        var x$5 = x$10.configurations$1;
-        var x$6 = x$10.parent$1;
-        var x$7 = x$10.dependencyManagement$1;
-        var x$8 = x$10.properties$1;
-        var x$9 = x$10.profiles$1;
-        var x$10$2$1 = x$10.snapshotVersioning$1;
-        var x$11 = x$10.packagingOpt$1;
-        var x$12 = x$10.relocated$1;
-        var x$13 = x$10.actualVersionOpt$1;
-        var x$14 = x$10.publications$1;
-        var x$15 = x$10.info$1;
-        return new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6, x$7, x$8, x$9, x$1, x$10$2$1, x$11, x$12, x$13, x$14, x$15)
+        var x$2 = x$11.module$1;
+        var x$3 = x$11.version$1;
+        var x$4 = x$11.dependencies$1;
+        var x$5 = x$11.configurations$1;
+        var x$6 = x$11.parent$1;
+        var x$7 = x$11.dependencyManagement$1;
+        var x$8 = x$11.properties$1;
+        var x$9 = x$11.profiles$1;
+        var x$10 = x$11.snapshotVersioning$1;
+        var x$11$2$1 = x$11.packagingOpt$1;
+        var x$12 = x$11.relocated$1;
+        var x$13 = x$11.actualVersionOpt$1;
+        var x$14 = x$11.publications$1;
+        var x$15 = x$11.info$1;
+        return new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6, x$7, x$8, x$9, x$1, x$10, x$11$2$1, x$12, x$13, x$14, x$15)
       })
     })(this, versions0)), F$4).map__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2) {
-      return (function(x$11$2) {
-        var x$11$1 = $as_Lcoursier_core_Project(x$11$2);
-        return new $c_T2().init___O__O(this$2, x$11$1)
+      return (function(x$12$2) {
+        var x$12$1 = $as_Lcoursier_core_Project(x$12$2);
+        return new $c_T2().init___O__O(this$2, x$12$1)
       })
     })(this)), F$4)
   } else {
