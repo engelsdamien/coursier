@@ -6,13 +6,15 @@
   <title>CLI · Coursier</title>
   <meta name="viewport" content="width=device-width">
   <meta name="generator" content="Docusaurus">
-  <meta name="description" content="coursier relies on [sbt-pack](https://github.com/xerial/sbt-pack) to build">
+  <meta name="description" content="<p>coursier relies on <a href=&quot;https://github.com/xerial/sbt-pack&quot;>sbt-pack</a> to build</p>
+">
   <meta name="docsearch:version" content="1.1.0-M11-2">
   <meta name="docsearch:language" content="en">
   <meta property="og:title" content="CLI · Coursier">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://get-coursier.io/index.html">
-  <meta property="og:description" content="coursier relies on [sbt-pack](https://github.com/xerial/sbt-pack) to build">
+  <meta property="og:url" content="https://get-coursier.io/">
+  <meta property="og:description" content="<p>coursier relies on <a href=&quot;https://github.com/xerial/sbt-pack&quot;>sbt-pack</a> to build</p>
+">
   <meta name="twitter:card" content="summary">
   <link rel="shortcut icon" href="../../../undefined">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
@@ -21,6 +23,7 @@
   <link rel="alternate" type="application/rss+xml" href="https://get-coursier.io/blog/feed.xml" title="Coursier Blog RSS Feed">
   <script type="text/javascript" src="https://buttons.github.io/buttons.js"></script>
   <link rel="stylesheet" href="../../../css/main.css">
+  <script src="/js/codetabs.js"></script>
  </head>
  <body class="sideNavVisible separateOnPageNav">
   <div class="fixedHeaderContainer">
@@ -49,7 +52,11 @@
        <section class="navWrapper wrapper">
         <div class="navBreadcrumb wrapper">
          <div class="navToggle" id="navToggler">
-          <i></i>
+          <div class="hamburger-menu">
+           <div class="line1"></div>
+           <div class="line2"></div>
+           <div class="line3"></div>
+          </div>
          </div>
          <h2><i>›</i><span>Development</span></h2>
          <div class="tocToggler" id="tocToggler">
@@ -59,7 +66,7 @@
         <div class="navGroups">
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">Intro</h3>
-          <ul>
+          <ul class="">
            <li class="navListItem"><a class="navItem" href="../../../docs/1.1.0-M11-2/overview">Overview</a></li>
            <li class="navListItem"><a class="navItem" href="../../../docs/1.1.0-M11-2/overview-motivations">Motivations</a></li>
            <li class="navListItem"><a class="navItem" href="../../../docs/1.1.0-M11-2/overview-in-the-wild">Users</a></li>
@@ -67,14 +74,14 @@
          </div>
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">sbt plugins</h3>
-          <ul>
+          <ul class="">
            <li class="navListItem"><a class="navItem" href="../../../docs/1.1.0-M11-2/sbt-coursier">sbt-coursier</a></li>
            <li class="navListItem"><a class="navItem" href="../../../docs/1.1.0-M11-2/sbt-pgp-coursier">sbt-pgp-coursier</a></li>
           </ul>
          </div>
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">Command-line</h3>
-          <ul>
+          <ul class="">
            <li class="navListItem"><a class="navItem" href="../../../docs/1.1.0-M11-2/cli-overview">Overview</a></li>
            <li class="navListItem"><a class="navItem" href="../../../docs/1.1.0-M11-2/cli-resolve">resolve</a></li>
            <li class="navListItem"><a class="navItem" href="../../../docs/1.1.0-M11-2/cli-fetch">fetch</a></li>
@@ -85,7 +92,7 @@
          </div>
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">API</h3>
-          <ul>
+          <ul class="">
            <li class="navListItem"><a class="navItem" href="../../../docs/1.1.0-M11-2/api">API</a></li>
            <li class="navListItem"><a class="navItem" href="../../../docs/1.1.0-M11-2/api-low-level">Low-level API</a></li>
            <li class="navListItem"><a class="navItem" href="../../../docs/1.1.0-M11-2/api-scala-js">Scala.js</a></li>
@@ -93,7 +100,7 @@
          </div>
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">Other</h3>
-          <ul>
+          <ul class="">
            <li class="navListItem"><a class="navItem" href="../../../docs/1.1.0-M11-2/cache">Cache</a></li>
            <li class="navListItem"><a class="navItem" href="../../../docs/1.1.0-M11-2/ttl">TTL</a></li>
            <li class="navListItem"><a class="navItem" href="../../../docs/1.1.0-M11-2/other-repositories">Repositories</a></li>
@@ -106,7 +113,7 @@
          </div>
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">Development</h3>
-          <ul>
+          <ul class="">
            <li class="navListItem"><a class="navItem" href="../../../docs/1.1.0-M11-2/dev-contributing">Contributing</a></li>
            <li class="navListItem navListItemActive"><a class="navItem" href="../../../docs/1.1.0-M11-2/dev-cli">CLI</a></li>
            <li class="navListItem"><a class="navItem" href="../../../docs/1.1.0-M11-2/dev-website">Website</a></li>
@@ -116,6 +123,29 @@
        </section>
       </div>
       <script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
             document.addEventListener('DOMContentLoaded', function() {
               createToggler('#navToggler', '#docsNav', 'docsSliderActive');
               createToggler('#tocToggler', 'body', 'tocActive');
@@ -145,7 +175,7 @@
         </script>
      </nav>
     </div>
-    <div class="container mainContainer docMainContainer">
+    <div class="container mainContainer">
      <div class="wrapper">
       <div class="post">
        <header class="postHeader">
@@ -169,12 +199,12 @@
        </article>
       </div>
       <div class="docs-prevnext">
-       <a class="docs-prev button" href="../../../docs/1.1.0-M11-2/dev-contributing"><span class="arrow-prev">← </span><span>Previous</span></a>
-       <a class="docs-next button" href="../../../docs/1.1.0-M11-2/dev-website"><span>Next</span><span class="arrow-next"> →</span></a>
+       <a class="docs-prev button" href="../../../docs/1.1.0-M11-2/dev-contributing"><span class="arrow-prev">← </span><span>Contributing</span></a>
+       <a class="docs-next button" href="../../../docs/1.1.0-M11-2/dev-website"><span>Website</span><span class="arrow-next"> →</span></a>
       </div>
      </div>
     </div>
-    <nav class="onPageNav docOnPageNav">
+    <nav class="onPageNav">
      <ul class="toc-headings">
       <li><a href="dev-cli.html#batch-mode">Batch mode</a></li>
       <li><a href="dev-cli.html#continuous-mode">Continuous mode</a></li>
@@ -183,19 +213,18 @@
    </div>
    <footer class="nav-footer" id="footer">
     <section class="sitemap">
-     <a href="../../.." class="nav-home"></a>
+     <h2><a href="../../.." class="nav-home">Coursier</a></h2>
      <div>
       <h5>Docs</h5>
       <a href="../../../docs/overview">Overview</a>
+      <a href="../../../docs/cli-overview">Install CLI</a>
+      <a href="../../../docs/sbt-coursier">Setup sbt</a>
+      <a href="../../../docs/api">Use the API</a>
      </div>
      <div>
       <h5>Community</h5>
-      <a href="https://gitter.im/coursier/coursier">Gitter room</a>
-     </div>
-     <div>
-      <h5>More</h5>
-      <a href="https://github.com/coursier/coursier">GitHub</a>
-      <a class="github-button" data-icon="octicon-star" data-count-href="/coursier/coursier/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a>
+      <a href="https://github.com/coursier/coursier" target="_blank"><img src="https://img.shields.io/github/stars/coursier/coursier.svg?color=%23087e8b&amp;label=stars&amp;logo=github&amp;style=social"></a>
+      <a href="https://gitter.im/coursier/coursier" target="_blank"><img src="https://img.shields.io/gitter/room/coursier/coursier.svg?logo=gitter&amp;style=social"></a>
      </div>
     </section>
     <section class="copyright">
@@ -205,6 +234,18 @@
   </div>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
   <script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script>
+  <script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script>
   <script>
               var search = docsearch({
                 

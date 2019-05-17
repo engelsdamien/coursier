@@ -20,6 +20,7 @@
   <link rel="alternate" type="application/rss+xml" href="https://get-coursier.io/blog/feed.xml" title="Coursier Blog RSS Feed">
   <script type="text/javascript" src="https://buttons.github.io/buttons.js"></script>
   <link rel="stylesheet" href="../../../../../../css/main.css">
+  <script src="/js/codetabs.js"></script>
  </head>
  <body class="sideNavVisible separateOnPageNav">
   <div class="fixedHeaderContainer">
@@ -48,7 +49,11 @@
        <section class="navWrapper wrapper">
         <div class="navBreadcrumb wrapper">
          <div class="navToggle" id="navToggler">
-          <i></i>
+          <div class="hamburger-menu">
+           <div class="line1"></div>
+           <div class="line2"></div>
+           <div class="line3"></div>
+          </div>
          </div>
          <h2><i>›</i><span>Recent Posts</span></h2>
          <div class="tocToggler" id="tocToggler">
@@ -58,7 +63,7 @@
         <div class="navGroups">
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">Recent Posts</h3>
-          <ul>
+          <ul class="">
            <li class="navListItem"><a class="navItem" href="../../../../../../blog/2019/03/05/1.1.0-M13">1.1.0-M13</a></li>
            <li class="navListItem navListItemActive"><a class="navItem" href="../../../../../../blog/2019/03/04/1.1.0-M12">1.1.0-M12</a></li>
            <li class="navListItem"><a class="navItem" href="../../../../../../blog/2019/02/05/1.1.0-M11">1.1.0-M11</a></li>
@@ -69,6 +74,29 @@
        </section>
       </div>
       <script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
             document.addEventListener('DOMContentLoaded', function() {
               createToggler('#navToggler', '#docsNav', 'docsSliderActive');
               createToggler('#tocToggler', 'body', 'tocActive');
@@ -128,19 +156,18 @@
    </div>
    <footer class="nav-footer" id="footer">
     <section class="sitemap">
-     <a href="../../../../../.." class="nav-home"></a>
+     <h2><a href="../../../../../.." class="nav-home">Coursier</a></h2>
      <div>
       <h5>Docs</h5>
       <a href="../../../../../../docs/overview">Overview</a>
+      <a href="../../../../../../docs/cli-overview">Install CLI</a>
+      <a href="../../../../../../docs/sbt-coursier">Setup sbt</a>
+      <a href="../../../../../../docs/api">Use the API</a>
      </div>
      <div>
       <h5>Community</h5>
-      <a href="https://gitter.im/coursier/coursier">Gitter room</a>
-     </div>
-     <div>
-      <h5>More</h5>
-      <a href="https://github.com/coursier/coursier">GitHub</a>
-      <a class="github-button" data-icon="octicon-star" data-count-href="/coursier/coursier/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a>
+      <a href="https://github.com/coursier/coursier" target="_blank"><img src="https://img.shields.io/github/stars/coursier/coursier.svg?color=%23087e8b&amp;label=stars&amp;logo=github&amp;style=social"></a>
+      <a href="https://gitter.im/coursier/coursier" target="_blank"><img src="https://img.shields.io/gitter/room/coursier/coursier.svg?logo=gitter&amp;style=social"></a>
      </div>
     </section>
     <section class="copyright">
@@ -150,6 +177,18 @@
   </div>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
   <script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script>
+  <script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script>
   <script>
               var search = docsearch({
                 

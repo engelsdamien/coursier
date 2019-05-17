@@ -6,13 +6,15 @@
   <title>Extra · Coursier</title>
   <meta name="viewport" content="width=device-width">
   <meta name="generator" content="Docusaurus">
-  <meta name="description" content="*Direct former README import (possibly not up-to-date)*">
+  <meta name="description" content="<p><em>Direct former README import (possibly not up-to-date)</em></p>
+">
   <meta name="docsearch:version" content="1.1.0-M13-2">
   <meta name="docsearch:language" content="en">
   <meta property="og:title" content="Extra · Coursier">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://get-coursier.io/index.html">
-  <meta property="og:description" content="*Direct former README import (possibly not up-to-date)*">
+  <meta property="og:url" content="https://get-coursier.io/">
+  <meta property="og:description" content="<p><em>Direct former README import (possibly not up-to-date)</em></p>
+">
   <meta name="twitter:card" content="summary">
   <link rel="shortcut icon" href="../../../../undefined">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css">
@@ -21,6 +23,7 @@
   <link rel="alternate" type="application/rss+xml" href="https://get-coursier.io/blog/feed.xml" title="Coursier Blog RSS Feed">
   <script type="text/javascript" src="https://buttons.github.io/buttons.js"></script>
   <link rel="stylesheet" href="../../../../css/main.css">
+  <script src="/js/codetabs.js"></script>
  </head>
  <body class="sideNavVisible separateOnPageNav">
   <div class="fixedHeaderContainer">
@@ -49,7 +52,11 @@
        <section class="navWrapper wrapper">
         <div class="navBreadcrumb wrapper">
          <div class="navToggle" id="navToggler">
-          <i></i>
+          <div class="hamburger-menu">
+           <div class="line1"></div>
+           <div class="line2"></div>
+           <div class="line3"></div>
+          </div>
          </div>
          <h2><i>›</i><span>Other</span></h2>
          <div class="tocToggler" id="tocToggler">
@@ -59,7 +66,7 @@
         <div class="navGroups">
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">Intro</h3>
-          <ul>
+          <ul class="">
            <li class="navListItem"><a class="navItem" href="../../../../docs/1.1.0-M13-2/overview">Overview</a></li>
            <li class="navListItem"><a class="navItem" href="../../../../docs/1.1.0-M13-2/overview-motivations">Motivations</a></li>
            <li class="navListItem"><a class="navItem" href="../../../../docs/1.1.0-M13-2/overview-in-the-wild">Users</a></li>
@@ -67,14 +74,14 @@
          </div>
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">sbt plugins</h3>
-          <ul>
+          <ul class="">
            <li class="navListItem"><a class="navItem" href="../../../../docs/1.1.0-M13-2/sbt-coursier">sbt-coursier</a></li>
            <li class="navListItem"><a class="navItem" href="../../../../docs/1.1.0-M13-2/sbt-pgp-coursier">sbt-pgp-coursier</a></li>
           </ul>
          </div>
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">Command-line</h3>
-          <ul>
+          <ul class="">
            <li class="navListItem"><a class="navItem" href="../../../../docs/1.1.0-M13-2/cli-overview">Overview</a></li>
            <li class="navListItem"><a class="navItem" href="../../../../docs/1.1.0-M13-2/cli-resolve">resolve</a></li>
            <li class="navListItem"><a class="navItem" href="../../../../docs/1.1.0-M13-2/cli-fetch">fetch</a></li>
@@ -85,7 +92,7 @@
          </div>
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">API</h3>
-          <ul>
+          <ul class="">
            <li class="navListItem"><a class="navItem" href="../../../../docs/1.1.0-M13-2/api">API</a></li>
            <li class="navListItem"><a class="navItem" href="../../../../docs/1.1.0-M13-2/api-low-level">Low-level API</a></li>
            <li class="navListItem"><a class="navItem" href="../../../../docs/1.1.0-M13-2/api-scala-js">Scala.js</a></li>
@@ -93,7 +100,7 @@
          </div>
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">Other</h3>
-          <ul>
+          <ul class="">
            <li class="navListItem"><a class="navItem" href="../../../../docs/1.1.0-M13-2/cache">Cache</a></li>
            <li class="navListItem"><a class="navItem" href="../../../../docs/1.1.0-M13-2/ttl">TTL</a></li>
            <li class="navListItem"><a class="navItem" href="../../../../docs/1.1.0-M13-2/other-repositories">Repositories</a></li>
@@ -106,7 +113,7 @@
          </div>
          <div class="navGroup">
           <h3 class="navGroupCategoryTitle">Development</h3>
-          <ul>
+          <ul class="">
            <li class="navListItem"><a class="navItem" href="../../../../docs/1.1.0-M13-2/dev-contributing">Contributing</a></li>
            <li class="navListItem"><a class="navItem" href="../../../../docs/1.1.0-M13-2/dev-cli">CLI</a></li>
            <li class="navListItem"><a class="navItem" href="../../../../docs/1.1.0-M13-2/dev-website">Website</a></li>
@@ -116,6 +123,29 @@
        </section>
       </div>
       <script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
             document.addEventListener('DOMContentLoaded', function() {
               createToggler('#navToggler', '#docsNav', 'docsSliderActive');
               createToggler('#tocToggler', 'body', 'tocActive');
@@ -145,7 +175,7 @@
         </script>
      </nav>
     </div>
-    <div class="container mainContainer docMainContainer">
+    <div class="container mainContainer">
      <div class="wrapper">
       <div class="post">
        <header class="postHeader">
@@ -157,34 +187,35 @@
          <span><p><em>Direct former README import (possibly not up-to-date)</em></p> <h2><a class="anchor" aria-hidden="true" id="printing-trees"></a><a href="index.html#printing-trees" aria-hidden="true" class="hash-link">
             <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
              <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
-            </svg></a>Printing trees</h2> <p>E.g. to print the dependency tree of <code>io.circe:circe-core:0.4.1</code>,</p> <pre><code class="hljs">$ coursier resolve -t io.circe:circe-core_2<span class="hljs-meta">.11</span>:<span class="hljs-number">0.4</span><span class="hljs-meta">.1</span>
-<span class="hljs-symbol"> Result:</span>
-└─ io.circe:circe-core_2<span class="hljs-meta">.11</span>:<span class="hljs-number">0.4</span><span class="hljs-meta">.1</span>
-   ├─ io.circe:circe-numbers_2<span class="hljs-meta">.11</span>:<span class="hljs-number">0.4</span><span class="hljs-meta">.1</span>
-   |  └─ org.scala-lang:scala-library:<span class="hljs-number">2.11</span><span class="hljs-meta">.8</span>
-   ├─ org.scala-lang:scala-library:<span class="hljs-number">2.11</span><span class="hljs-meta">.8</span>
-   └─ org.typelevel:cats-core_2<span class="hljs-meta">.11</span>:<span class="hljs-number">0.4</span><span class="hljs-meta">.1</span>
-      ├─ com.github.mpilquist:simulacrum_2<span class="hljs-meta">.11</span>:<span class="hljs-number">0.7</span><span class="hljs-meta">.0</span>
-      |  ├─ org.scala-lang:scala-library:<span class="hljs-number">2.11</span><span class="hljs-meta">.7</span> -&gt; <span class="hljs-number">2.11</span><span class="hljs-meta">.8</span>
-      |  └─ org.typelevel:macro-compat_2<span class="hljs-meta">.11</span>:<span class="hljs-number">1.1</span><span class="hljs-meta">.0</span>
-      |     └─ org.scala-lang:scala-library:<span class="hljs-number">2.11</span><span class="hljs-meta">.7</span> -&gt; <span class="hljs-number">2.11</span><span class="hljs-meta">.8</span>
+            </svg></a>Printing trees</h2> <p>E.g. to print the dependency tree of <code>io.circe:circe-core:0.4.1</code>,</p> <pre><code class="hljs">$ coursier resolve -t io.circe:circe-core_2<span class="hljs-number">.11</span>:<span class="hljs-number">0.4</span><span class="hljs-number">.1</span>
+  Result:
+└─ io.circe:circe-core_2<span class="hljs-number">.11</span>:<span class="hljs-number">0.4</span><span class="hljs-number">.1</span>
+   ├─ io.circe:circe-numbers_2<span class="hljs-number">.11</span>:<span class="hljs-number">0.4</span><span class="hljs-number">.1</span>
+   |  └─ org.scala-lang:scala-library:<span class="hljs-number">2.11</span><span class="hljs-number">.8</span>
+   ├─ org.scala-lang:scala-library:<span class="hljs-number">2.11</span><span class="hljs-number">.8</span>
+   └─ org.typelevel:cats-core_2<span class="hljs-number">.11</span>:<span class="hljs-number">0.4</span><span class="hljs-number">.1</span>
+      ├─ com.github.mpilquist:simulacrum_2<span class="hljs-number">.11</span>:<span class="hljs-number">0.7</span><span class="hljs-number">.0</span>
+      |  ├─ org.scala-lang:scala-library:<span class="hljs-number">2.11</span><span class="hljs-number">.7</span> -&gt; <span class="hljs-number">2.11</span><span class="hljs-number">.8</span>
+      |  └─ org.typelevel:macro-compat_2<span class="hljs-number">.11</span>:<span class="hljs-number">1.1</span><span class="hljs-number">.0</span>
+      |     └─ org.scala-lang:scala-library:<span class="hljs-number">2.11</span><span class="hljs-number">.7</span> -&gt; <span class="hljs-number">2.11</span><span class="hljs-number">.8</span>
 ...
-</code></pre> <p>From SBT, with sbt-coursier enabled, the command <code>coursierDependencyTree</code> prints the dependency tree of the various sub-projects,</p> <pre><code class="hljs">&gt; <span class="hljs-selector-tag">coursierDependencyTree</span>
-<span class="hljs-selector-tag">io</span><span class="hljs-selector-class">.get-coursier</span><span class="hljs-selector-pseudo">:coursier_2.11</span><span class="hljs-selector-pseudo">:1.0.1-SNAPSHOT</span>
-├─ <span class="hljs-selector-tag">com</span><span class="hljs-selector-class">.lihaoyi</span><span class="hljs-selector-pseudo">:fastparse_2.11</span><span class="hljs-selector-pseudo">:0.3.7</span>
-|  ├─ <span class="hljs-selector-tag">com</span><span class="hljs-selector-class">.lihaoyi</span><span class="hljs-selector-pseudo">:fastparse-utils_2.11</span><span class="hljs-selector-pseudo">:0.3.7</span>
-|  |  ├─ <span class="hljs-selector-tag">com</span><span class="hljs-selector-class">.lihaoyi</span><span class="hljs-selector-pseudo">:sourcecode_2.11</span><span class="hljs-selector-pseudo">:0.1.1</span>
-|  |  |  └─ <span class="hljs-selector-tag">org</span><span class="hljs-selector-class">.scala-lang</span><span class="hljs-selector-pseudo">:scala-library</span><span class="hljs-selector-pseudo">:2.11.7</span> <span class="hljs-selector-tag">-</span>&gt; <span class="hljs-selector-tag">2</span><span class="hljs-selector-class">.11</span><span class="hljs-selector-class">.8</span>
-|  |  └─ <span class="hljs-selector-tag">org</span><span class="hljs-selector-class">.scala-lang</span><span class="hljs-selector-pseudo">:scala-library</span><span class="hljs-selector-pseudo">:2.11.7</span> <span class="hljs-selector-tag">-</span>&gt; <span class="hljs-selector-tag">2</span><span class="hljs-selector-class">.11</span><span class="hljs-selector-class">.8</span>
-|  ├─ <span class="hljs-selector-tag">com</span><span class="hljs-selector-class">.lihaoyi</span><span class="hljs-selector-pseudo">:sourcecode_2.11</span><span class="hljs-selector-pseudo">:0.1.1</span>
-|  |  └─ <span class="hljs-selector-tag">org</span><span class="hljs-selector-class">.scala-lang</span><span class="hljs-selector-pseudo">:scala-library</span><span class="hljs-selector-pseudo">:2.11.7</span> <span class="hljs-selector-tag">-</span>&gt; <span class="hljs-selector-tag">2</span><span class="hljs-selector-class">.11</span><span class="hljs-selector-class">.8</span>
-|  └─ <span class="hljs-selector-tag">org</span><span class="hljs-selector-class">.scala-lang</span><span class="hljs-selector-pseudo">:scala-library</span><span class="hljs-selector-pseudo">:2.11.7</span> <span class="hljs-selector-tag">-</span>&gt; <span class="hljs-selector-tag">2</span><span class="hljs-selector-class">.11</span><span class="hljs-selector-class">.8</span>
-├─ <span class="hljs-selector-tag">org</span><span class="hljs-selector-class">.jsoup</span><span class="hljs-selector-pseudo">:jsoup</span><span class="hljs-selector-pseudo">:1.9.2</span>
+</code></pre> <p>From SBT, with sbt-coursier enabled, the command <code>coursierDependencyTree</code> prints the dependency tree of the various sub-projects,</p> <pre><code class="hljs">&gt; coursierDependencyTree
+io.<span class="hljs-keyword">get</span>-coursier:coursier_2<span class="hljs-number">.11</span>:<span class="hljs-number">1.0</span><span class="hljs-number">.1</span>-SNAPSHOT
+├─ com.lihaoyi:fastparse_2<span class="hljs-number">.11</span>:<span class="hljs-number">0.3</span><span class="hljs-number">.7</span>
+|  ├─ com.lihaoyi:fastparse-utils_2<span class="hljs-number">.11</span>:<span class="hljs-number">0.3</span><span class="hljs-number">.7</span>
+|  |  ├─ com.lihaoyi:sourcecode_2<span class="hljs-number">.11</span>:<span class="hljs-number">0.1</span><span class="hljs-number">.1</span>
+|  |  |  └─ org.scala-lang:scala-library:<span class="hljs-number">2.11</span><span class="hljs-number">.7</span> -&gt; <span class="hljs-number">2.11</span><span class="hljs-number">.8</span>
+|  |  └─ org.scala-lang:scala-library:<span class="hljs-number">2.11</span><span class="hljs-number">.7</span> -&gt; <span class="hljs-number">2.11</span><span class="hljs-number">.8</span>
+|  ├─ com.lihaoyi:sourcecode_2<span class="hljs-number">.11</span>:<span class="hljs-number">0.1</span><span class="hljs-number">.1</span>
+|  |  └─ org.scala-lang:scala-library:<span class="hljs-number">2.11</span><span class="hljs-number">.7</span> -&gt; <span class="hljs-number">2.11</span><span class="hljs-number">.8</span>
+|  └─ org.scala-lang:scala-library:<span class="hljs-number">2.11</span><span class="hljs-number">.7</span> -&gt; <span class="hljs-number">2.11</span><span class="hljs-number">.8</span>
+├─ org.jsoup:jsoup:<span class="hljs-number">1.9</span><span class="hljs-number">.2</span>
 ...
 </code></pre> <p>Note that this command can be scoped to sub-projects, like <code>proj/coursierDependencyTree</code>.</p> <p>The printed trees highlight version bumps, that only change the patch number, in yellow. The <code>2.11.7 -&gt; 2.11.8</code> above mean that the parent dependency wanted version <code>2.11.7</code>, but version <code>2.11.8</code> landed in the classpath, pulled in this version by other dependencies.</p> <p>They highlight in red version bumps that may not be binary compatible, changing major or minor version number.</p> <h2><a class="anchor" aria-hidden="true" id="generating-bootstrap-launchers"></a><a href="index.html#generating-bootstrap-launchers" aria-hidden="true" class="hash-link">
             <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
              <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
-            </svg></a>Generating bootstrap launchers</h2> <p>The <code>coursier bootstrap</code> command generates tiny bootstrap launchers (~30 kB). These are able to download their dependencies upon first launch, then launch the corresponding application. E.g. to generate a launcher for scalafmt,</p> <pre><code class="hljs">$ coursier <span class="hljs-keyword">bootstrap </span>com.geirsson:<span class="hljs-keyword">scalafmt-cli_2.11:0.2.3 </span>-o <span class="hljs-keyword">scalafmt </span></code></pre> <p>This generates a <code>scalafmt</code> file, which is a tiny JAR, corresponding to the <code>bootstrap</code> sub-project of coursier. It contains resource files, with the URLs of the various dependencies of scalafmt. On first launch, these are downloaded under <code>~/.coursier/bootstrap/com.geirsson/scalafmt-cli_2.11</code> (following the organization and name of the first dependency - note that this directory can be changed with the <code>-D</code> option). Nothing needs to be downloaded once all the dependencies are there, and the application is then launched straightaway.</p> <h2><a class="anchor" aria-hidden="true" id="credentials"></a><a href="index.html#credentials" aria-hidden="true" class="hash-link">
+            </svg></a>Generating bootstrap launchers</h2> <p>The <code>coursier bootstrap</code> command generates tiny bootstrap launchers (~30 kB). These are able to download their dependencies upon first launch, then launch the corresponding application. E.g. to generate a launcher for scalafmt,</p> <pre><code class="hljs">$ coursier bootstrap com.geirsson:scalafmt-cli_2<span class="hljs-number">.11</span>:<span class="hljs-number">0.2</span><span class="hljs-number">.3</span> -o scalafmt
+</code></pre> <p>This generates a <code>scalafmt</code> file, which is a tiny JAR, corresponding to the <code>bootstrap</code> sub-project of coursier. It contains resource files, with the URLs of the various dependencies of scalafmt. On first launch, these are downloaded under <code>~/.coursier/bootstrap/com.geirsson/scalafmt-cli_2.11</code> (following the organization and name of the first dependency - note that this directory can be changed with the <code>-D</code> option). Nothing needs to be downloaded once all the dependencies are there, and the application is then launched straightaway.</p> <h2><a class="anchor" aria-hidden="true" id="credentials"></a><a href="index.html#credentials" aria-hidden="true" class="hash-link">
             <svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewbox="0 0 16 16" width="16">
              <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
             </svg></a>Credentials</h2> <p>To use artifacts from repositories requiring credentials, pass the user and password via the repository URL, like</p> <pre><code class="hljs">$ coursier fetch -r <span class="hljs-symbol">https:</span>/<span class="hljs-regexp">/user:pass@company.com/repo</span> com.<span class="hljs-symbol">company:</span><span class="hljs-class"><span class="hljs-keyword">lib</span>:0.1.0</span>
@@ -196,12 +227,12 @@
        </article>
       </div>
       <div class="docs-prevnext">
-       <a class="docs-prev button" href="../../../../docs/1.1.0-M13-2/json-report"><span class="arrow-prev">← </span><span>Previous</span></a>
-       <a class="docs-next button" href="../../../../docs/1.1.0-M13-2/limitations"><span>Next</span><span class="arrow-next"> →</span></a>
+       <a class="docs-prev button" href="../../../../docs/1.1.0-M13-2/json-report"><span class="arrow-prev">← </span><span>JSON report</span></a>
+       <a class="docs-next button" href="../../../../docs/1.1.0-M13-2/limitations"><span>Limitations</span><span class="arrow-next"> →</span></a>
       </div>
      </div>
     </div>
-    <nav class="onPageNav docOnPageNav">
+    <nav class="onPageNav">
      <ul class="toc-headings">
       <li><a href="index.html#printing-trees">Printing trees</a></li>
       <li><a href="index.html#generating-bootstrap-launchers">Generating bootstrap launchers</a></li>
@@ -212,19 +243,18 @@
    </div>
    <footer class="nav-footer" id="footer">
     <section class="sitemap">
-     <a href="../../../.." class="nav-home"></a>
+     <h2><a href="../../../.." class="nav-home">Coursier</a></h2>
      <div>
       <h5>Docs</h5>
       <a href="../../../../docs/overview">Overview</a>
+      <a href="../../../../docs/cli-overview">Install CLI</a>
+      <a href="../../../../docs/sbt-coursier">Setup sbt</a>
+      <a href="../../../../docs/api">Use the API</a>
      </div>
      <div>
       <h5>Community</h5>
-      <a href="https://gitter.im/coursier/coursier">Gitter room</a>
-     </div>
-     <div>
-      <h5>More</h5>
-      <a href="https://github.com/coursier/coursier">GitHub</a>
-      <a class="github-button" data-icon="octicon-star" data-count-href="/coursier/coursier/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a>
+      <a href="https://github.com/coursier/coursier" target="_blank"><img src="https://img.shields.io/github/stars/coursier/coursier.svg?color=%23087e8b&amp;label=stars&amp;logo=github&amp;style=social"></a>
+      <a href="https://gitter.im/coursier/coursier" target="_blank"><img src="https://img.shields.io/gitter/room/coursier/coursier.svg?logo=gitter&amp;style=social"></a>
      </div>
     </section>
     <section class="copyright">
@@ -234,6 +264,18 @@
   </div>
   <script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
   <script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script>
+  <script>
+                document.addEventListener('keyup', function(e) {
+                  if (e.target !== document.body) {
+                    return;
+                  }
+                  // keyCode for '/' (slash)
+                  if (e.keyCode === 191) {
+                    const search = document.getElementById('search_input_react');
+                    search && search.focus();
+                  }
+                });
+              </script>
   <script>
               var search = docsearch({
                 
