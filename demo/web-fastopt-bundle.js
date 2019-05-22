@@ -38740,6 +38740,62 @@ $c_Lcoursier_maven_MavenRepository$.prototype.coursier$maven$MavenRepository$$di
     return module.name$1
   }
 });
+$c_Lcoursier_maven_MavenRepository$.prototype.coursier$maven$MavenRepository$$stableVersion__Lcoursier_core_Versions__s_Option = (function(versions) {
+  if (this.isStable$1__p1__Lcoursier_core_Version__Z(new $c_Lcoursier_core_Version().init___T(versions.release$1))) {
+    return new $c_s_Some().init___O(versions.release$1)
+  } else {
+    var this$2 = versions.available$1;
+    var f = (function($this) {
+      return (function(x$4$2) {
+        var x$4 = $as_T(x$4$2);
+        return new $c_Lcoursier_core_Version().init___T(x$4)
+      })
+    })(this);
+    var this$1 = $m_sci_List$();
+    var bf = this$1.ReusableCBFInstance$2;
+    if ((bf === $m_sci_List$().ReusableCBFInstance$2)) {
+      if ((this$2 === $m_sci_Nil$())) {
+        var jsx$1 = $m_sci_Nil$()
+      } else {
+        var arg1 = this$2.head__O();
+        var h = new $c_sci_$colon$colon().init___O__sci_List(f(arg1), $m_sci_Nil$());
+        var t = h;
+        var rest = $as_sci_List(this$2.tail__O());
+        while ((rest !== $m_sci_Nil$())) {
+          var arg1$1 = rest.head__O();
+          var nx = new $c_sci_$colon$colon().init___O__sci_List(f(arg1$1), $m_sci_Nil$());
+          t.tl$5 = nx;
+          t = nx;
+          rest = $as_sci_List(rest.tail__O())
+        };
+        var jsx$1 = h
+      }
+    } else {
+      var b = $f_sc_TraversableLike__builder$1__psc_TraversableLike__scg_CanBuildFrom__scm_Builder(this$2, bf);
+      var these = this$2;
+      while ((!these.isEmpty__Z())) {
+        var arg1$2 = these.head__O();
+        b.$$plus$eq__O__scm_Builder(f(arg1$2));
+        these = $as_sci_List(these.tail__O())
+      };
+      var jsx$1 = b.result__O()
+    };
+    var available = $as_sci_List($as_sc_TraversableLike(jsx$1).filter__F1__O(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2$1) {
+      return (function(v$2) {
+        var v = $as_Lcoursier_core_Version(v$2);
+        return this$2$1.isStable$1__p1__Lcoursier_core_Version__Z(v)
+      })
+    })(this))));
+    if (available.isEmpty__Z()) {
+      return $m_s_None$()
+    } else {
+      var this$3 = $m_s_math_Ordering$();
+      var evidence$1 = $m_s_Predef$().singleton$und$less$colon$less$2;
+      var cmp = new $c_s_math_LowPriorityOrderingImplicits$$anon$3().init___s_math_LowPriorityOrderingImplicits__F1(this$3, evidence$1);
+      return new $c_s_Some().init___O($as_Lcoursier_core_Version($f_sc_TraversableOnce__max__s_math_Ordering__O(available, cmp)).repr$1)
+    }
+  }
+});
 $c_Lcoursier_maven_MavenRepository$.prototype.parseRawPomDom__T__s_util_Either = (function(str) {
   var this$1 = $m_Lcoursier_core_compatibility_package$().xmlParseDom__T__s_util_Either(str);
   var this$2 = new $c_s_util_Either$RightProjection().init___s_util_Either(this$1);
@@ -38772,6 +38828,32 @@ $c_Lcoursier_maven_MavenRepository$.prototype.parseRawPomDom__T__s_util_Either =
   } else {
     return this$2.e$1
   }
+});
+$c_Lcoursier_maven_MavenRepository$.prototype.isStable$1__p1__Lcoursier_core_Version__Z = (function(v) {
+  var x = v.repr$1;
+  var this$6 = new $c_sci_StringOps().init___T(x);
+  var jsx$1 = $m_s_Array$();
+  var array = [new $c_jl_Character().init___C(45)];
+  var separators = jsx$1.apply__C__sc_Seq__AC(46, new $c_sjs_js_WrappedArray().init___sjs_js_Array(array));
+  var xs = $f_sci_StringLike__split__AC__AT(this$6, separators);
+  var i = 0;
+  while (true) {
+    if ((i < xs.u.length)) {
+      var index = i;
+      var arg1 = xs.get(index);
+      var x$3 = $as_T(arg1);
+      var this$11 = new $c_sci_StringOps().init___T(x$3);
+      var jsx$2 = (($f_sc_IndexedSeqOptimized__lengthCompare__I__I(this$11, 5) <= 0) === true)
+    } else {
+      var jsx$2 = false
+    };
+    if (jsx$2) {
+      i = ((1 + i) | 0)
+    } else {
+      break
+    }
+  };
+  return (i === xs.u.length)
 });
 var $d_Lcoursier_maven_MavenRepository$ = new $TypeData().initClass({
   Lcoursier_maven_MavenRepository$: 0
@@ -44079,6 +44161,25 @@ $c_s_Array$.prototype.slowcopy__p2__O__I__O__I__I__V = (function(src, srcPos, de
     i = ((1 + i) | 0);
     j = ((1 + j) | 0)
   }
+});
+$c_s_Array$.prototype.apply__C__sc_Seq__AC = (function(x, xs) {
+  var array = $newArrayObject($d_C.getArrayOf(), [((1 + xs.length__I()) | 0)]);
+  array.set(0, x);
+  var elem$1 = 0;
+  elem$1 = 1;
+  var this$2 = xs.iterator__sc_Iterator();
+  while (this$2.hasNext__Z()) {
+    var arg1 = this$2.next__O();
+    if ((arg1 === null)) {
+      var x$2 = 0
+    } else {
+      var this$4 = $as_jl_Character(arg1);
+      var x$2 = this$4.value$1
+    };
+    array.set(elem$1, x$2);
+    elem$1 = ((1 + elem$1) | 0)
+  };
+  return array
 });
 $c_s_Array$.prototype.apply__I__sc_Seq__AI = (function(x, xs) {
   var array = $newArrayObject($d_I.getArrayOf(), [((1 + xs.length__I()) | 0)]);
@@ -59403,24 +59504,24 @@ $c_Lcoursier_maven_MavenRepository.prototype.withSnapshotVersioning$1__p1__Lcour
       } else if ($is_s_Some(versioningOption)) {
         var x2 = $as_s_Some(versioningOption);
         return $this.findVersioning__Lcoursier_core_Module__T__s_Option__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module$1$1, version$2$1, x2, fetch$1$1, F$2$1).map__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3$1, snapshotVersioning$1) {
-          return (function(x$8$2) {
-            var x$8 = $as_Lcoursier_core_Project(x$8$2);
+          return (function(x$10$2) {
+            var x$10 = $as_Lcoursier_core_Project(x$10$2);
             var x$1 = new $c_s_Some().init___O(snapshotVersioning$1);
-            var x$2 = x$8.module$1;
-            var x$3 = x$8.version$1;
-            var x$4 = x$8.dependencies$1;
-            var x$5 = x$8.configurations$1;
-            var x$6 = x$8.parent$1;
-            var x$7 = x$8.dependencyManagement$1;
-            var x$8$2$1 = x$8.properties$1;
-            var x$9 = x$8.profiles$1;
-            var x$10 = x$8.versions$1;
-            var x$11 = x$8.packagingOpt$1;
-            var x$12 = x$8.relocated$1;
-            var x$13 = x$8.actualVersionOpt$1;
-            var x$14 = x$8.publications$1;
-            var x$15 = x$8.info$1;
-            return new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6, x$7, x$8$2$1, x$9, x$10, x$1, x$11, x$12, x$13, x$14, x$15)
+            var x$2 = x$10.module$1;
+            var x$3 = x$10.version$1;
+            var x$4 = x$10.dependencies$1;
+            var x$5 = x$10.configurations$1;
+            var x$6 = x$10.parent$1;
+            var x$7 = x$10.dependencyManagement$1;
+            var x$8 = x$10.properties$1;
+            var x$9 = x$10.profiles$1;
+            var x$10$2$1 = x$10.versions$1;
+            var x$11 = x$10.packagingOpt$1;
+            var x$12 = x$10.relocated$1;
+            var x$13 = x$10.actualVersionOpt$1;
+            var x$14 = x$10.publications$1;
+            var x$15 = x$10.info$1;
+            return new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6, x$7, x$8, x$9, x$10$2$1, x$1, x$11, x$12, x$13, x$14, x$15)
           })
         })($this, snapshotVersioning)), F$2$1)
       } else {
@@ -59503,8 +59604,8 @@ $c_Lcoursier_maven_MavenRepository.prototype.find__Lcoursier_core_Module__T__F1_
     var jsx$1 = true
   } else {
     var arg1 = this$1.get__O();
-    var x$10 = $uZ(arg1);
-    var jsx$1 = (!x$10)
+    var x$12 = $uZ(arg1);
+    var jsx$1 = (!x$12)
   };
   if (((jsx$1 && module.attributes$1.contains__O__Z("scalaVersion")) && module.attributes$1.contains__O__Z("sbtVersion"))) {
     var versionsF = this.versionsFromListing__p1__Lcoursier_core_Module__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module, fetch, F).orElse__F0__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction0().init___sjs_js_Function0((function(this$2, v$1) {
@@ -59522,8 +59623,8 @@ $c_Lcoursier_maven_MavenRepository.prototype.find__Lcoursier_core_Module__T__F1_
     var jsx$2 = true
   } else {
     var arg1$1 = this$5.get__O();
-    var x$13 = $as_Lcoursier_core_VersionInterval(arg1$1);
-    var jsx$2 = x$13.isValid__Z()
+    var x$15 = $as_Lcoursier_core_VersionInterval(arg1$1);
+    var jsx$2 = x$15.isValid__Z()
   };
   if (jsx$2) {
     var x1 = this$5
@@ -59540,8 +59641,8 @@ $c_Lcoursier_maven_MavenRepository.prototype.find__Lcoursier_core_Module__T__F1_
           var versionsUrl = $as_T(x0$1.$$und2__O());
           var this$7 = new $c_s_Some().init___O(versions0.latest$1);
           var arg1$2 = this$7.value$2;
-          var x$14 = $as_T(arg1$2);
-          var this$9 = new $c_sci_StringOps().init___T(x$14);
+          var x$16 = $as_T(arg1$2);
+          var this$9 = new $c_sci_StringOps().init___T(x$16);
           if ($f_sc_TraversableOnce__nonEmpty__Z(this$9)) {
             var this$10 = this$7
           } else {
@@ -59550,8 +59651,8 @@ $c_Lcoursier_maven_MavenRepository.prototype.find__Lcoursier_core_Module__T__F1_
           if (this$10.isEmpty__Z()) {
             var this$11 = new $c_s_Some().init___O(versions0.release$1);
             var arg1$3 = this$11.value$2;
-            var x$15 = $as_T(arg1$3);
-            var this$13 = new $c_sci_StringOps().init___T(x$15);
+            var x$17 = $as_T(arg1$3);
+            var this$13 = new $c_sci_StringOps().init___T(x$17);
             if ($f_sc_TraversableOnce__nonEmpty__Z(this$13)) {
               var this$14 = this$11
             } else {
@@ -59582,8 +59683,8 @@ $c_Lcoursier_maven_MavenRepository.prototype.find__Lcoursier_core_Module__T__F1_
           var versionsUrl$1 = $as_T(x0$2.$$und2__O());
           var this$17 = new $c_s_Some().init___O(versions0$1.release$1);
           var arg1$4 = this$17.value$2;
-          var x$16 = $as_T(arg1$4);
-          var this$19 = new $c_sci_StringOps().init___T(x$16);
+          var x$18 = $as_T(arg1$4);
+          var this$19 = new $c_sci_StringOps().init___T(x$18);
           if ($f_sc_TraversableOnce__nonEmpty__Z(this$19)) {
             var this$20 = this$17
           } else {
@@ -59603,44 +59704,65 @@ $c_Lcoursier_maven_MavenRepository.prototype.find__Lcoursier_core_Module__T__F1_
           throw new $c_s_MatchError().init___O(x0$2)
         }
       })
-    })(this, F, module, fetch)), F) : this.findNoInterval__Lcoursier_core_Module__T__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module, version, fetch, F).map__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$8$1) {
-      return (function(x$17$2) {
-        var x$17 = $as_Lcoursier_core_Project(x$17$2);
-        return new $c_T2().init___O__O(this$8$1, x$17)
-      })
-    })(this)), F)))
-  } else if ($is_s_Some(x1)) {
-    var x2 = $as_s_Some(x1);
-    var itv = $as_Lcoursier_core_VersionInterval(x2.value$2);
-    return versionsF.flatMap__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$9$1, itv$1, version$1, F$3, module$3, fetch$3) {
+    })(this, F, module, fetch)), F) : ((version === "latest.stable") ? versionsF.flatMap__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$8$1, F$3, module$3, fetch$3) {
       return (function(x0$3$2) {
         var x0$3 = $as_T2(x0$3$2);
         if ((x0$3 !== null)) {
           var versions0$2 = $as_Lcoursier_core_Versions(x0$3.$$und1__O());
           var versionsUrl$2 = $as_T(x0$3.$$und2__O());
-          var release = new $c_Lcoursier_core_Version().init___T(versions0$2.release$1);
+          var this$23 = $m_Lcoursier_maven_MavenRepository$().coursier$maven$MavenRepository$$stableVersion__Lcoursier_core_Versions__s_Option(versions0$2);
+          if (this$23.isEmpty__Z()) {
+            $m_s_package$();
+            var value$4 = ("No stable version found in " + versionsUrl$2);
+            var eitherVersion$2 = new $c_s_util_Left().init___O(value$4)
+          } else {
+            $m_s_package$();
+            var value$5 = this$23.get__O();
+            var eitherVersion$2 = new $c_s_util_Right().init___O(value$5)
+          };
+          return this$8$1.fromEitherVersion$1__p1__s_util_Either__Lcoursier_core_Versions__Lcoursier_util_Monad__Lcoursier_core_Module__F1__Lcoursier_util_EitherT(eitherVersion$2, versions0$2, F$3, module$3, fetch$3)
+        } else {
+          throw new $c_s_MatchError().init___O(x0$3)
+        }
+      })
+    })(this, F, module, fetch)), F) : this.findNoInterval__Lcoursier_core_Module__T__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module, version, fetch, F).map__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$9$1) {
+      return (function(x$19$2) {
+        var x$19 = $as_Lcoursier_core_Project(x$19$2);
+        return new $c_T2().init___O__O(this$9$1, x$19)
+      })
+    })(this)), F))))
+  } else if ($is_s_Some(x1)) {
+    var x2 = $as_s_Some(x1);
+    var itv = $as_Lcoursier_core_VersionInterval(x2.value$2);
+    return versionsF.flatMap__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$10$1, itv$1, version$1, F$4, module$4, fetch$4) {
+      return (function(x0$4$2) {
+        var x0$4 = $as_T2(x0$4$2);
+        if ((x0$4 !== null)) {
+          var versions0$3 = $as_Lcoursier_core_Versions(x0$4.$$und1__O());
+          var versionsUrl$3 = $as_T(x0$4.$$und2__O());
+          var release = new $c_Lcoursier_core_Version().init___T(versions0$3.release$1);
           if (itv$1.contains__Lcoursier_core_Version__Z(release)) {
             $m_s_package$();
-            var value$4 = versions0$2.release$1;
-            var eitherVersion$2 = new $c_s_util_Right().init___O(value$4)
+            var value$6 = versions0$3.release$1;
+            var eitherVersion$3 = new $c_s_util_Right().init___O(value$6)
           } else {
-            var this$25 = versions0$2.available$1;
+            var this$28 = versions0$3.available$1;
             var f = (function($this) {
-              return (function(x$18$2) {
-                var x$18 = $as_T(x$18$2);
-                return new $c_Lcoursier_core_Version().init___T(x$18)
+              return (function(x$20$2) {
+                var x$20 = $as_T(x$20$2);
+                return new $c_Lcoursier_core_Version().init___T(x$20)
               })
-            })(this$9$1);
-            var this$24 = $m_sci_List$();
-            var bf = this$24.ReusableCBFInstance$2;
+            })(this$10$1);
+            var this$27 = $m_sci_List$();
+            var bf = this$27.ReusableCBFInstance$2;
             if ((bf === $m_sci_List$().ReusableCBFInstance$2)) {
-              if ((this$25 === $m_sci_Nil$())) {
+              if ((this$28 === $m_sci_Nil$())) {
                 var jsx$3 = $m_sci_Nil$()
               } else {
-                var arg1$5 = this$25.head__O();
+                var arg1$5 = this$28.head__O();
                 var h = new $c_sci_$colon$colon().init___O__sci_List(f(arg1$5), $m_sci_Nil$());
                 var t = h;
-                var rest = $as_sci_List(this$25.tail__O());
+                var rest = $as_sci_List(this$28.tail__O());
                 while ((rest !== $m_sci_Nil$())) {
                   var arg1$6 = rest.head__O();
                   var nx = new $c_sci_$colon$colon().init___O__sci_List(f(arg1$6), $m_sci_Nil$());
@@ -59651,8 +59773,8 @@ $c_Lcoursier_maven_MavenRepository.prototype.find__Lcoursier_core_Module__T__F1_
                 var jsx$3 = h
               }
             } else {
-              var b = $f_sc_TraversableLike__builder$1__psc_TraversableLike__scg_CanBuildFrom__scm_Builder(this$25, bf);
-              var these = this$25;
+              var b = $f_sc_TraversableLike__builder$1__psc_TraversableLike__scg_CanBuildFrom__scm_Builder(this$28, bf);
+              var these = this$28;
               while ((!these.isEmpty__Z())) {
                 var arg1$7 = these.head__O();
                 b.$$plus$eq__O__scm_Builder(f(arg1$7));
@@ -59665,23 +59787,23 @@ $c_Lcoursier_maven_MavenRepository.prototype.find__Lcoursier_core_Module__T__F1_
                 var version$3 = $as_Lcoursier_core_Version(version$2);
                 return itv$1$1.contains__Lcoursier_core_Version__Z(version$3)
               })
-            })(this$9$1, itv$1))));
+            })(this$10$1, itv$1))));
             if (inInterval.isEmpty__Z()) {
               $m_s_package$();
-              var value$5 = ((("No version found for " + version$1) + " in ") + versionsUrl$2);
-              var eitherVersion$2 = new $c_s_util_Left().init___O(value$5)
+              var value$7 = ((("No version found for " + version$1) + " in ") + versionsUrl$3);
+              var eitherVersion$3 = new $c_s_util_Left().init___O(value$7)
             } else {
               $m_s_package$();
-              var this$27 = $m_s_math_Ordering$();
+              var this$30 = $m_s_math_Ordering$();
               var evidence$1 = $m_s_Predef$().singleton$und$less$colon$less$2;
-              var cmp = new $c_s_math_LowPriorityOrderingImplicits$$anon$3().init___s_math_LowPriorityOrderingImplicits__F1(this$27, evidence$1);
-              var value$6 = $as_Lcoursier_core_Version($f_sc_TraversableOnce__max__s_math_Ordering__O(inInterval, cmp)).repr$1;
-              var eitherVersion$2 = new $c_s_util_Right().init___O(value$6)
+              var cmp = new $c_s_math_LowPriorityOrderingImplicits$$anon$3().init___s_math_LowPriorityOrderingImplicits__F1(this$30, evidence$1);
+              var value$8 = $as_Lcoursier_core_Version($f_sc_TraversableOnce__max__s_math_Ordering__O(inInterval, cmp)).repr$1;
+              var eitherVersion$3 = new $c_s_util_Right().init___O(value$8)
             }
           };
-          return this$9$1.fromEitherVersion$1__p1__s_util_Either__Lcoursier_core_Versions__Lcoursier_util_Monad__Lcoursier_core_Module__F1__Lcoursier_util_EitherT(eitherVersion$2, versions0$2, F$3, module$3, fetch$3)
+          return this$10$1.fromEitherVersion$1__p1__s_util_Either__Lcoursier_core_Versions__Lcoursier_util_Monad__Lcoursier_core_Module__F1__Lcoursier_util_EitherT(eitherVersion$3, versions0$3, F$4, module$4, fetch$4)
         } else {
-          throw new $c_s_MatchError().init___O(x0$3)
+          throw new $c_s_MatchError().init___O(x0$4)
         }
       })
     })(this, itv, version, F, module, fetch)), F)
@@ -59716,9 +59838,9 @@ $c_Lcoursier_maven_MavenRepository.prototype.findNoInterval__Lcoursier_core_Modu
     })
   })(this, version, F, module, fetch)));
   var f$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2, version$2) {
-    return (function(x$9$2) {
-      var x$9 = $as_s_util_Either(x$9$2);
-      var this$1 = new $c_s_util_Either$RightProjection().init___s_util_Either(x$9);
+    return (function(x$11$2) {
+      var x$11 = $as_s_util_Either(x$11$2);
+      var this$1 = new $c_s_util_Either$RightProjection().init___s_util_Either(x$11);
       var x1 = this$1.e$1;
       if ($is_s_util_Right(x1)) {
         var x2 = $as_s_util_Right(x1);
@@ -59732,14 +59854,14 @@ $c_Lcoursier_maven_MavenRepository.prototype.findNoInterval__Lcoursier_core_Modu
         var x$6 = proj.parent$1;
         var x$7 = proj.dependencyManagement$1;
         var x$8 = proj.properties$1;
-        var x$9$1 = proj.profiles$1;
+        var x$9 = proj.profiles$1;
         var x$10 = proj.versions$1;
-        var x$11 = proj.snapshotVersioning$1;
+        var x$11$1 = proj.snapshotVersioning$1;
         var x$12 = proj.packagingOpt$1;
         var x$13 = proj.relocated$1;
         var x$14 = proj.publications$1;
         var x$15 = proj.info$1;
-        return new $c_s_util_Right().init___O(new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6, x$7, x$8, x$9$1, x$10, x$11, x$12, x$13, x$1, x$14, x$15))
+        return new $c_s_util_Right().init___O(new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6, x$7, x$8, x$9, x$10, x$11$1, x$12, x$13, x$1, x$14, x$15))
       } else {
         return this$1.e$1
       }
@@ -59762,9 +59884,9 @@ $c_Lcoursier_maven_MavenRepository.prototype.urlFor__sc_Seq__Z__T = (function(pa
     var this$1 = $m_sc_Seq$();
     var jsx$3 = $as_sc_TraversableLike(path.map__F1__scg_CanBuildFrom__O(jsx$4, this$1.ReusableCBFInstance$2));
     var jsx$2 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2) {
-      return (function(x$3$2) {
-        var x$3 = $as_T(x$3$2);
-        return (x$3 + "/")
+      return (function(x$5$2) {
+        var x$5 = $as_T(x$5$2);
+        return (x$5 + "/")
       })
     })(this));
     var this$3 = $m_sc_Seq$();
@@ -59809,17 +59931,17 @@ $c_Lcoursier_maven_MavenRepository.prototype.versionsFromListing__p1__Lcoursier_
         var res = new $c_s_util_Left().init___O(value)
       } else {
         var jsx$1 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this$1) {
-          return (function(x$4$2) {
-            var x$4 = $as_T(x$4$2);
-            return new $c_Lcoursier_core_Version().init___T(x$4)
+          return (function(x$6$2) {
+            var x$6 = $as_T(x$6$2);
+            return new $c_Lcoursier_core_Version().init___T(x$6)
           })
         })($this));
         var this$5 = $m_sc_Seq$();
         var parsedVersions = $as_sc_Seq(rawVersions.map__F1__scg_CanBuildFrom__O(jsx$1, this$5.ReusableCBFInstance$2));
         var p = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2$1) {
-          return (function(x$5$2) {
-            var x$5 = $as_Lcoursier_core_Version(x$5$2);
-            var this$6 = x$5.items__sci_List();
+          return (function(x$7$2) {
+            var x$7 = $as_Lcoursier_core_Version(x$7$2);
+            var this$6 = x$7.items__sci_List();
             var these = this$6;
             while ((!these.isEmpty__Z())) {
               var arg1 = these.head__O();
@@ -59851,9 +59973,9 @@ $c_Lcoursier_maven_MavenRepository.prototype.versionsFromListing__p1__Lcoursier_
           var jsx$5 = latest.repr$1;
           var jsx$4 = latest.repr$1;
           var jsx$3 = new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$3$1) {
-            return (function(x$6$2) {
-              var x$6 = $as_Lcoursier_core_Version(x$6$2);
-              return x$6.repr$1
+            return (function(x$8$2) {
+              var x$8 = $as_Lcoursier_core_Version(x$8$2);
+              return x$8.repr$1
             })
           })($this));
           var this$9 = $m_sc_Seq$();
@@ -59866,8 +59988,8 @@ $c_Lcoursier_maven_MavenRepository.prototype.versionsFromListing__p1__Lcoursier_
       if ($is_s_util_Right(x1)) {
         var x2$1 = $as_s_util_Right(x1);
         var b = x2$1.value$2;
-        var x$7 = $as_Lcoursier_core_Versions(b);
-        var jsx$6 = new $c_s_util_Right().init___O(new $c_T2().init___O__O(x$7, listingUrl$1))
+        var x$9 = $as_Lcoursier_core_Versions(b);
+        var jsx$6 = new $c_s_util_Right().init___O(new $c_T2().init___O__O(x$9, listingUrl$1))
       } else {
         var jsx$6 = this$11.e$1
       };
@@ -59884,29 +60006,29 @@ $c_Lcoursier_maven_MavenRepository.prototype.fromEitherVersion$1__p1__s_util_Eit
     var x3 = $as_s_util_Right(eitherVersion);
     var version0 = $as_T(x3.value$2);
     return this.findNoInterval__Lcoursier_core_Module__T__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(module$2, version0, fetch$2, F$4).map__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function($this, versions0$1) {
-      return (function(x$11$2) {
-        var x$11 = $as_Lcoursier_core_Project(x$11$2);
+      return (function(x$13$2) {
+        var x$13 = $as_Lcoursier_core_Project(x$13$2);
         var x$1 = new $c_s_Some().init___O(versions0$1);
-        var x$2 = x$11.module$1;
-        var x$3 = x$11.version$1;
-        var x$4 = x$11.dependencies$1;
-        var x$5 = x$11.configurations$1;
-        var x$6 = x$11.parent$1;
-        var x$7 = x$11.dependencyManagement$1;
-        var x$8 = x$11.properties$1;
-        var x$9 = x$11.profiles$1;
-        var x$10 = x$11.snapshotVersioning$1;
-        var x$11$2$1 = x$11.packagingOpt$1;
-        var x$12 = x$11.relocated$1;
-        var x$13 = x$11.actualVersionOpt$1;
-        var x$14 = x$11.publications$1;
-        var x$15 = x$11.info$1;
-        return new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6, x$7, x$8, x$9, x$1, x$10, x$11$2$1, x$12, x$13, x$14, x$15)
+        var x$2 = x$13.module$1;
+        var x$3 = x$13.version$1;
+        var x$4 = x$13.dependencies$1;
+        var x$5 = x$13.configurations$1;
+        var x$6 = x$13.parent$1;
+        var x$7 = x$13.dependencyManagement$1;
+        var x$8 = x$13.properties$1;
+        var x$9 = x$13.profiles$1;
+        var x$10 = x$13.snapshotVersioning$1;
+        var x$11 = x$13.packagingOpt$1;
+        var x$12 = x$13.relocated$1;
+        var x$13$2$1 = x$13.actualVersionOpt$1;
+        var x$14 = x$13.publications$1;
+        var x$15 = x$13.info$1;
+        return new $c_Lcoursier_core_Project().init___Lcoursier_core_Module__T__sc_Seq__sci_Map__s_Option__sc_Seq__sc_Seq__sc_Seq__s_Option__s_Option__s_Option__Z__s_Option__sc_Seq__Lcoursier_core_Info(x$2, x$3, x$4, x$5, x$6, x$7, x$8, x$9, x$1, x$10, x$11, x$12, x$13$2$1, x$14, x$15)
       })
     })(this, versions0)), F$4).map__F1__Lcoursier_util_Monad__Lcoursier_util_EitherT(new $c_sjsr_AnonFunction1().init___sjs_js_Function1((function(this$2) {
-      return (function(x$12$2) {
-        var x$12$1 = $as_Lcoursier_core_Project(x$12$2);
-        return new $c_T2().init___O__O(this$2, x$12$1)
+      return (function(x$14$2) {
+        var x$14$1 = $as_Lcoursier_core_Project(x$14$2);
+        return new $c_T2().init___O__O(this$2, x$14$1)
       })
     })(this)), F$4)
   } else {
@@ -67063,9 +67185,6 @@ function $f_sci_MapLike__$$plus$plus__sc_GenTraversableOnce__sci_Map($thiz, xs) 
     })
   })($thiz))))
 }
-function $f_sci_StringLike__escape__psci_StringLike__C__T($thiz, ch) {
-  return (((((ch >= 97) && (ch <= 122)) || ((ch >= 65) && (ch <= 90))) || ((ch >= 48) && (ch <= 57))) ? $as_T($g.String.fromCharCode(ch)) : ("\\" + new $c_jl_Character().init___C(ch)))
-}
 function $f_sci_StringLike__unwrapArg__psci_StringLike__O__O($thiz, arg) {
   if ($is_s_math_ScalaNumber(arg)) {
     var x2 = $as_s_math_ScalaNumber(arg);
@@ -67073,6 +67192,35 @@ function $f_sci_StringLike__unwrapArg__psci_StringLike__O__O($thiz, arg) {
   } else {
     return arg
   }
+}
+function $f_sci_StringLike__escape__psci_StringLike__C__T($thiz, ch) {
+  return (((((ch >= 97) && (ch <= 122)) || ((ch >= 65) && (ch <= 90))) || ((ch >= 48) && (ch <= 57))) ? $as_T($g.String.fromCharCode(ch)) : ("\\" + new $c_jl_Character().init___C(ch)))
+}
+function $f_sci_StringLike__split__AC__AT($thiz, separators) {
+  var start = 0;
+  var end = separators.u.length;
+  var z = "[";
+  var start$1 = start;
+  var z$1 = z;
+  var jsx$1;
+  _foldl: while (true) {
+    if ((start$1 !== end)) {
+      var temp$start = ((1 + start$1) | 0);
+      var arg1 = z$1;
+      var idx = start$1;
+      var c = separators.get(idx);
+      var x$1 = $as_T(arg1);
+      var temp$z = (("" + x$1) + $f_sci_StringLike__escape__psci_StringLike__C__T($thiz, c));
+      start$1 = temp$start;
+      z$1 = temp$z;
+      continue _foldl
+    };
+    var jsx$1 = z$1;
+    break
+  };
+  var re = ($as_T(jsx$1) + "]");
+  var thiz = $thiz.toString__T();
+  return $m_sjsr_RuntimeString$().split__T__T__I__AT(thiz, re, 0)
 }
 function $f_sci_StringLike__slice__I__I__O($thiz, from, until) {
   var start = ((from > 0) ? from : 0);
