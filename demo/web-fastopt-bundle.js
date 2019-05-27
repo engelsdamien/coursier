@@ -15594,7 +15594,7 @@ $c_Lcoursier_core_Parse$.prototype.version__T__s_Option = (function(s) {
           var this$8 = $as_jl_Character(arg1);
           var c = this$8.value$1
         };
-        var jsx$2 = (((((c !== 46) && (c !== 45)) && (c !== 95)) && (!$m_Lcoursier_core_compatibility_package$RichChar$().letterOrDigit$extension__C__Z(c))) === false)
+        var jsx$2 = ((((((c !== 46) && (c !== 45)) && (c !== 95)) && (c !== 43)) && (!$m_Lcoursier_core_compatibility_package$RichChar$().letterOrDigit$extension__C__Z(c))) === false)
       } else {
         var jsx$2 = false
       };
